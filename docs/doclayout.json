@@ -1,0 +1,54 @@
+{
+  "book": {
+    "title": "",
+    "author": "",
+    "dirpath": "/path/to/book",
+    "pages": [],
+    "annotations" : []
+  },
+  "annotation": {
+    "author": "",
+    "text": "",
+    "comment": "",
+    "date": "",
+    "rank": "0-10",
+    "matches": [],
+    "see_also": [],
+    "refs": []
+  }
+  "page": {
+    "imagepath": "chapter1/page1.png",
+    "ncolumns": 2,
+    "pagenum": 1,
+    "colspace": "10px",
+    "linespace": "5px",
+    "wordspace": "2px",
+    "angle": 30.0,
+    "columns": [],
+    "annotations" : []
+  },
+  "column": {
+    "geometry": ["startx", "starty", "sizex", "sizey"],
+    "title": "",
+    "sections": [],
+    "annotations" : []
+  },
+  "section": {
+    "geometry": ["startx", "starty", "sizex", "sizey"],
+    "title": "",
+    "text": "",
+    "type": ["paragraph", "footnote", "pagenum", "notes"],
+    "lines": [],
+    "annotations" : []
+  },
+  "line": {
+    "geometry": ["startx", "starty", "sizex", "sizey"],
+  	"text": "",
+    "annotations" : [],
+  	"phrases": []
+  },
+  "phrase": {
+    "geometry": ["startx", "starty", "sizex", "sizey"],
+    "annotations" : []
+  }
+}
