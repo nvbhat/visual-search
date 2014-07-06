@@ -6,16 +6,6 @@
     "pages": [],
     "annotations" : []
   },
-  "annotation": {
-    "author": "",
-    "text": "",
-    "comment": "",
-    "date": "",
-    "rank": "0-10",
-    "matches": [],
-    "see_also": [],
-    "refs": []
-  }
   "page": {
     "imagepath": "chapter1/page1.png",
     "ncolumns": 2,
@@ -28,13 +18,13 @@
     "annotations" : []
   },
   "column": {
-    "geometry": ["startx", "starty", "sizex", "sizey"],
+    "geometry": { "startx": 0, "starty": 0, "sizex": 300, "sizey": 300 },
     "title": "",
     "sections": [],
     "annotations" : []
   },
   "section": {
-    "geometry": ["startx", "starty", "sizex", "sizey"],
+    "geometry": { "startx": 0, "starty": 0, "sizex": 300, "sizey": 300 },
     "title": "",
     "text": "",
     "type": ["paragraph", "footnote", "pagenum", "notes"],
@@ -42,13 +32,26 @@
     "annotations" : []
   },
   "line": {
-    "geometry": ["startx", "starty", "sizex", "sizey"],
+    "geometry": { "startx": 0, "starty": 0, "sizex": 300, "sizey": 300 },
   	"text": "",
     "annotations" : [],
   	"phrases": []
   },
   "phrase": {
-    "geometry": ["startx", "starty", "sizex", "sizey"],
+    "geometry": { "startx": 0, "starty": 0, "sizex": 300, "sizey": 300 },
     "annotations" : []
+  }
+}
+
+{
+  "annotation": {
+    "author": "",
+    "text": "",
+    "comment": "",
+    "date": "",
+    "rank": "0-10",
+    "matches": [],
+    "see_also": [],
+    "refs": []
   }
 }

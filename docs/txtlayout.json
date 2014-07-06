@@ -1,0 +1,38 @@
+{
+  "book": {
+    "title": "",
+    "author": "",
+    "filepath": "/path/to/book.html",
+    "sections": [],
+    "annotations" : []
+  },
+  "section": {
+    "location": { "offset": 200, "nbytes": 1000 },
+    "heading": "",
+    "text": "",
+    "type": ["paragraph", "footnote", "pagenum", "notes"],
+    "phrases": [],
+    "annotations" : []
+    "lipi": "devanagari",
+    "font": "mangal",
+    "size": "8pt",
+  },
+  "phrase": {
+    "location": { "offset": 200, "nbytes": 1000 },
+    "text": "",
+    "annotations" : []
+  }
+}
+
+{
+  "annotation": {
+    "author": "",
+    "text": "",
+    "comment": "",
+    "date": "",
+    "rank": "0-10",
+    "matches": [],
+    "see_also": [],
+    "refs": []
+  }
+}
