@@ -1,10 +1,10 @@
-CFLAGS = `pkg-config --cflags opencv` -std=c++0x
-#LIBS = `pkg-config --libs opencv` -L/home/gopinath/opencv-2.4.8/release/lib
-LIBS = `pkg-config --libs opencv`
-SRCS = main.cpp ConfigParser.cpp ImageSegmenter.cpp ReadConfigParams.cpp SplitLine.cpp
-ImageSegmenter : 
-	#g++ $(CFLAGS) $(SRCS) $(LIBS) -o ImageSeg
-	g++ $(SRCS) -o ImageSegmenter $(CFLAGS) $(LIBS) 
+CFLAGS = `pkg-config --cflags opencv`
+LIBS = `pkg-config --libs opencv` #-L/home/gopinath/opencv-2.4.8/release/lib
+SRCS = main.cpp ImageSegmenter.cpp SplitLine.cpp
+PGM = ImageSegmenter
+
+${PGM} : 
+	g++ $(CFLAGS) $(SRCS) $(LIBS) -o $@
 
 clean: 
-	rm -f ImageSegmenter
+	rm -rf ${PGM}
