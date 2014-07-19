@@ -22,8 +22,10 @@ class ImageSegmenter
 		void SplitIntoLines(const Mat& img);
 		void SplitLinesIntoWords(const Mat& img);
 		void SplitLine(const Mat& lineImg, vector< pair<unsigned int,unsigned int> >& wordBoundaries);  
-		void DisplayWordBoundaries(const string& wordBoundariesFile);
+		void DisplayWordBoundaries(const string& wordBoundariesFile,string path);
 	public:
 		ImageSegmenter();
-		void SplitIntoWords(const Mat& img,string& wordBoundariesFile); 
+		void SplitIntoWords(const Mat& img,string& wordBoundariesFile,string path);
+               // std::string GetImagepath(string path);
+ 
 };

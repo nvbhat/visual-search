@@ -20,11 +20,13 @@ int main(int argc, char **argv)
 	}else
 		cout << "Read image file [" << string(argv[1]) << "] OK\n";
 	
+             string imgpath=string(argv[1]);
 	string wordBoundariesFile = string(argv[2]);
-
+         
 	ImageSegmenter imgSeg;
 	// Process
-	imgSeg.SplitIntoWords(docImage,wordBoundariesFile);	
-	cout << "DONE\n";
+        //imgSeg.GetImagePath(imgpath);
+	imgSeg.SplitIntoWords(docImage,wordBoundariesFile,imgpath);	
+	//cout << "DONE\n";
 	return 0;
 }

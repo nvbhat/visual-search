@@ -4,6 +4,7 @@
 #include <opencv2/core/core.hpp>
 #include <iostream>
 #include<fstream>
+#include<string>
 using namespace std;
 using namespace cv;
 ImageSegmenter::ImageSegmenter()
@@ -17,7 +18,7 @@ ImageSegmenter::ImageSegmenter()
 	m_MIN_INTER_WORD_GAP = 5;
 }
 
-void ImageSegmenter::DisplayWordBoundaries(const string& wordBoundariesFile)
+void ImageSegmenter::DisplayWordBoundaries(const string& wordBoundariesFile,string path)
 {
 
 	Mat out3 = Mat::zeros(m_docImage.rows,m_docImage.cols,CV_8UC3);
@@ -27,34 +28,43 @@ void ImageSegmenter::DisplayWordBoundaries(const string& wordBoundariesFile)
 	channels.push_back(m_docImage);
 	merge(channels,out3);
         ofstream resultFile;
-          resultFile.open("result_rect_layout.txt");
 
+        cout<<"{"<<endl<<"\"imagepath\""<<": \""<<path<<"\","<<endl<<
+                       "\"Segments\""<<":"<<"[";
+          //resultFile.open("result_rect_layout.json");
+         //  char path[50]="path to image ";
+           // cout<<"{"<<endl<<"file"<<":"<<path<<","<<endl<<"}"<<endl;
 	for(unsigned int i = 0 ; i < m_wordBoundaries.size() ; i++) {
 		vector< pair<unsigned int,unsigned int> > wordBVec = m_wordBoundaries.at(i);
 		pair<unsigned int,unsigned int> lineB = m_lineBoundaries.at(i);
 		for(unsigned int j = 0 ; j < wordBVec.size() ; j++) {
 			pair<unsigned int,unsigned int> wordB = wordBVec.at(j);
-			cout<<wordB.first<<","<<lineB.first<<","<<wordB.second<<","<<lineB.second<<endl;
-              
-                   resultFile<<wordB.first<<","<<lineB.first<<","<<wordB.second<<","<<lineB.second<<endl;
-                        Point p1(wordB.first,lineB.first);
+          
+			if((i+j)>0)
+				printf(",");
+			printf("\n    { 'geometry': { 'x': %d, 'y': %d, 'width': %d, 'height': %d } }",
+				wordB.first, lineB.first, 
+				(wordB.second - wordB.first), (lineB.second - lineB.first));
+				
+			Point p1(wordB.first,lineB.first);
 			Point p2(wordB.second,lineB.second);
-                       //cout<<"p1:"<<p1<<","<<"p2:"<<p2<<endl;
 			rectangle(out3,p1,p2,Scalar(255,0,255),1,CV_AA,0);
 		}
 	}
-           resultFile.close();		
+
+         cout<<endl<<"]"<<endl<<"}"<<endl;
+          // resultFile.close();		
 	imwrite(wordBoundariesFile.c_str(),out3);
       //  imshow("result image:",out3);
        // cout<<wordBoundariesFile.c_str()<<endl;
 }
 
 
-void ImageSegmenter::SplitIntoWords(const Mat& img,string& wordBoundariesFile)
+void ImageSegmenter::SplitIntoWords(const Mat& img,string& wordBoundariesFile,string path)
 {
 	SplitIntoLines(img);	
 	SplitLinesIntoWords(img);
-	DisplayWordBoundaries(wordBoundariesFile);
+	DisplayWordBoundaries(wordBoundariesFile,path);
 } 
 
 void ImageSegmenter::SplitIntoLines(const Mat& img)
@@ -110,7 +120,7 @@ void ImageSegmenter::SplitIntoLines(const Mat& img)
 			rectangle(out3,p1,p2,Scalar(255,0,255),1,CV_AA,0);
 		}
 	}
-	cout << "DONE\n";
+	//cout << "DONE\n";
 	//imwrite("linerect.png",out3);
 	//exit(1);
 
@@ -122,7 +132,7 @@ void ImageSegmenter::SplitLinesIntoWords(const Mat& img)
         outfile.open("rectangle_result.txt");
 	// Scan the line boundaries array and for each entry
 	// split the line into words
-	cout << "Lines size=" << m_lineBoundaries.size() << endl;
+	//cout << "Lines size=" << m_lineBoundaries.size() << endl;
 	for(unsigned int i = 0 ; i < m_lineBoundaries.size() ; i++) {
 		pair<unsigned int,unsigned int> currLineBoundaries = m_lineBoundaries.at(i);
 		unsigned int currLineTop = currLineBoundaries.first;
