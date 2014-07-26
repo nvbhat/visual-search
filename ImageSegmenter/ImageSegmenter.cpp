@@ -48,6 +48,7 @@ void ImageSegmenter::DisplayWordBoundaries(const string& wordBoundariesFile,stri
 				
 			Point p1(wordB.first,lineB.first);
 			Point p2(wordB.second,lineB.second);
+                       cout<<p1<<p2<<endl;
 			rectangle(out3,p1,p2,Scalar(255,0,255),1,CV_AA,0);
 		}
 	}
