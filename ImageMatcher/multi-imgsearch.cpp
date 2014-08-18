@@ -73,8 +73,12 @@ main(int argc, char **argv)
     cout<<data<<endl;
     cout<<"\n";
     
-	char path_to_file[80]="./testimages/book-images/";
-	char path_to_templateimage_file[80]="./testimages/template-images/";
+    cerr << "Give a directory containing images to search" << endl;
+
+    string path_to_file, path_to_templateimage_file;
+    cin >> path_to_file;
+    cerr << "Give a template image file to locate" << endl;
+    cin >> path_to_templateimage_file;
 
 	vector<string> imgfnames;
 	int max=20;
