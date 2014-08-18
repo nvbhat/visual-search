@@ -27,8 +27,8 @@ int main(int argc,char** argv)
       // cout<<"Avg:"<<myMAtMean<<endl;
     cv::imshow("Source Image",ref);
      
-    cout<<"{"<<endl<<"\"imagepath\""<<": \""<<argv[1]<<","<<endl<<"\"template-imagepath\""<<": \""<<argv[2]
-<<"\","<<endl<< "\"Segments\""<<":"<<"[";
+    cout<<"{"<<endl<<
+        "\"imagepath\""<<": \""<<argv[1]<<","<<endl<<"\"template-imagepath\""<<": \""<<argv[2] <<"\","<<endl<< "\"Segments\""<<":"<<"[";
     int nMatches = 0;
      
 

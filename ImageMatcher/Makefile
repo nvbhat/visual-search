@@ -1,7 +1,7 @@
 ﻿CFLAGS = `pkg-config --cflags opencv`
 LIBS = `pkg-config --libs opencv` #-L/home/gopinath/opencv-2.4.8/release/lib
-SRCS = imgsearch.cpp
-PGM = imgsearch
+SRCS = multi-imgsearch.cpp
+PGM = multi-imgsearch
 
 ${PGM} : 
 	g++ $(CFLAGS) $(SRCS) $(LIBS) -o $@
