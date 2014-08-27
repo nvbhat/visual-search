@@ -9,7 +9,7 @@ print "visual search starts...."
 #bookimgdirpath = raw_input ()
 #bookdirs = os.listdir(bookimgdirpath)
 
-with open( 'book.json' ) as f :
+with open('book.json') as f :
      d=json.load( f )
 
 refimg = []
@@ -20,7 +20,7 @@ bookimgdata = []
 #for bookfilename in bookdirs:
    # print bookfilename
     #bookimgdata.append(bookfilename)
-bookimgdirpath=d[ 'book' ] [ 'imagedirpath' ]
+bookimgdirpath=d['book'] ['imagedirpath']
 bookdirs=os.listdir( bookimgdirpath)
 
 for bookfilename in bookdirs:
