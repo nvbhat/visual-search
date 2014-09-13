@@ -104,21 +104,18 @@ def SplitLine(img,wordBoundaries,cols,rows):
     #cv2.imshow('img',img)
     #cv2.waitKey(0)
    
-    col_sums = []
+   
     col_sums1 = []
-    col_sums = cols
+    col_sums1 = cols
     
-    #col_sum = 0
-    #for col in range(cols):
-       # col_sum = 0
-        #for row in range(rows):
-            #col_sum += img[row][col]
+    
+    for col in range(cols):
+        col_sum = 0
+        for row in range(rows):
+            col_sum += img[row][col]
             
-        #col_sums = col_sum/255
-        #print col_sums
-        #for i in np.nditer( col_sums ):
-            #col_sums1.append( i )
-        #print col_sums1
+        col_sums1 = col_sum/255
+        print col_sums1
 
         
 def SplitLinesIntoWords(img,lineB1,lineB2,cols,rows):
