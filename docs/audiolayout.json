@@ -1,0 +1,35 @@
+{
+  "book": {
+    "title": "",
+    "author": "",
+    "filepath": "/path/to/book",
+    "clip": { "start": "epochsecs.msecs" "length": "epochsecs.msecs" },
+    "section": [],
+    "annotations" : []
+  },
+  "section": {
+    "clip": { "start": "epochsecs.msecs" "length": "epochsecs.msecs" },
+    "title": "",
+    "text": "",
+    "type": ["paragraph", "footnote", "pagenum", "notes"],
+    "phrases": [],
+    "annotations" : []
+  },
+  "phrase": {
+    "clip": { "start": "epochsecs.msecs" "length": "epochsecs.msecs" },
+    "annotations" : []
+  }
+}
+
+{
+  "annotation": {
+    "author": "",
+    "text": "",
+    "comment": "",
+    "date": "",
+    "rank": "0-10",
+    "matches": [],
+    "see_also": [],
+    "refs": []
+  }
+}
