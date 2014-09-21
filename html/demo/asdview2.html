@@ -62,8 +62,8 @@ d3.json("data1.json",
                 .attr("xlink:href", test.imagepath)
                 .attr("x", "0")
                 .attr("y", "0")
-                .attr("width", "100%")
-                .attr("height", "100%")
+                .attr("width", "800")
+                .attr("height", "600")
 .attr("preserveAspectRatio","none")
 ;
 //Draw the Rectangle
@@ -80,7 +80,7 @@ d3.json("data1.json",
 			.attr('fill',function (d) { return "blue"; } )
 			.on('mouseover',tip.show)
 			.on('mouseout',tip.hide)
-.on("dblclick",function goToURL() {
+.on("click",function goToURL() {
   window.open("form.html");});
 });
 function redraw() {
