@@ -9,7 +9,13 @@ print "visual search starts...."
 #bookimgdirpath = raw_input ()
 #bookdirs = os.listdir(bookimgdirpath)
 
-with open('book.json') as f :
+#infile = "../examples/book.json"
+#infiledir ="../examples/" 
+
+infile=sys.argv[1]
+infiledir=sys.argv[2]
+
+with open(infile) as f :
      d=json.load( f )
 
 refimg = []
@@ -21,9 +27,9 @@ bookimgdata = []
    # print bookfilename
     #bookimgdata.append(bookfilename)
 bookimgdirpath=d['book'] ['imagedirpath']
-bookdirs=os.listdir( bookimgdirpath)
+bookdirs=os.listdir(infiledir+bookimgdirpath)
 
-f= open("templatematch.json",'w')
+f= open(infiledir+"/search/templatematch.json",'w')
 
 for bookfilename in bookdirs:
     #print bookfilename
@@ -35,7 +41,7 @@ for bookfilename in bookdirs:
 #tempdirs = os.listdir(tempimgdirpath)
 
 tempimgdirpath = d[ 'page' ] [ 'templateimgpath' ]
-tempdirs = os.listdir( tempimgdirpath )
+tempdirs = os.listdir( infiledir+tempimgdirpath )
 
 print "listing all template images"
 for tempfilename in tempdirs:    
@@ -48,23 +54,23 @@ input_tempimg = raw_input()
 
 
 for i in range(len(bookimgdata)):
-    templateimg=cv2.imread(tempimgdirpath+input_tempimg,0)
+    templateimg=cv2.imread(infiledir+tempimgdirpath+input_tempimg,0)
   
     print "   {\n "
-    print "    \"imagepath\"",":\"",bookimgdirpath,"\",","\n"
-    print "    \"template-imagepath\"",":\"",tempimgdirpath,"\",","\n"
+    print "    \"imagepath\"",":\"",infiledir+bookimgdirpath,"\",","\n"
+    print "    \"template-imagepath\"",":\"",infiledir+tempimgdirpath,"\",","\n"
     print "    \"segments\": ["
 
-    str2="\n{\n    \"imagepath\": "+"\""+bookimgdirpath+bookimgdata[i]+"\""+","
+    str2="\n{\n    \"imagepath\": "+"\""+infiledir+bookimgdirpath+bookimgdata[i]+"\""+","
     f.write(str2)    
-    str3="\n    \"template-imagepath\": "+"\""+tempimgdirpath+input_tempimg+    "\""+","
+    str3="\n    \"template-imagepath\": "+"\""+infiledir+tempimgdirpath+input_tempimg+    "\""+","
     f.write(str3)
     str4= "\n    \"segments\":[\n"
     f.write(str4)
 
     nMatches = 0
     nMatches1=0
-    img_rgb = cv2.imread( bookimgdirpath+bookimgdata[i] )
+    img_rgb = cv2.imread( infiledir+bookimgdirpath+bookimgdata[i] )
     img_gray = cv2.cvtColor( img_rgb, cv2.COLOR_BGR2GRAY )
     w, h = templateimg.shape[::-1]
     res = cv2.matchTemplate( img_gray, templateimg, cv2.TM_CCOEFF_NORMED )
@@ -84,8 +90,8 @@ for i in range(len(bookimgdata)):
         f.write(str5) 
         nMatches = nMatches+1
     print "\n]\n","}\n"
-    cv2.imshow('result',img_rgb)
-    cv2.waitKey(2000)    
+    #cv2.imshow('result',img_rgb)
+    #cv2.waitKey(2000)    
     str6="\n]\n}\n"
     f.write(str6)
     

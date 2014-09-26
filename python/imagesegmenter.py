@@ -4,11 +4,12 @@ import cv2
 import numpy as np
 import json
 import cv
+
 #import pygame
-def SplitIntoLines(bookimgdirpath):
+def SplitIntoLines(infiledir,bookimgdirpath):
     img = cv2.imread( bookimgdirpath,cv2.CV_LOAD_IMAGE_GRAYSCALE )
     ret, otsu =cv2.threshold(img,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-    cv2.imwrite("binary-thresholded.png",otsu)
+    #cv2.imwrite("binary-thresholded.png",otsu)
     
     m_white_row_threshold = 0
     m_white_row_fill_factor = 1.0
@@ -76,7 +77,7 @@ def SplitIntoLines(bookimgdirpath):
                p2=(cols-1,lineBottom)
                cv2.rectangle(out3,p1,p2,cv.CV_RGB(255,0,255),1,cv.CV_AA,0)
                SplitLinesIntoWords(otsu,lineB[0],lineB[1],cols,rows)                
-    cv2.imwrite('result.png',out3)
+    cv2.imwrite('result11.png',out3)
    
     #print m_lineBoundaries
     #print lineB rowSums=rowSum/255
@@ -99,51 +100,13 @@ def SplitIntoLines(bookimgdirpath):
 
     #cv2.imshow('result',img)
     #cv2.waitKey(2000)
-
-def SplitLine(img,wordBoundaries,cols,rows):
-    #cv2.imshow('img',img)
-    #cv2.waitKey(0)
-   
-   
-    col_sums1 = []
-    col_sums1 = cols
-    
-    
-    for col in range(cols):
-        col_sum = 0
-        for row in range(rows):
-            col_sum += img[row][col]
-            
-        col_sums1 = col_sum/255
-        print col_sums1
-
         
 def SplitLinesIntoWords(img,lineB1,lineB2,cols,rows):
     m_lineBoundaries=[lineB1,lineB2]
 
     currLineTop=lineB1
     currLineBottom=lineB2
-    #print currLineTop
-    #print m_lineBoundaries
-    #currLineBoundaries=[][]
-    #len1= len(m_lineBoundaries)
-    #len2=len(m_lineBoundaries1)
-    #m_lineB = m_lineBoundaries
-    #print m_lineB
-    #currLineTop1 =[]
-    #currLineBottom1 = []
-    #for i in range(len(m_lineBoundaries)):
-        #currLineTop = m_lineBoundaries[i]
-        #print "curlinetop:",currLineTop
-        #currLineTop1.append(currLineTop)
-    #print currLineTop1
-    #for i in range(len(m_lineBoundaries)):
-        #for j in range(len(m_lineBoundaries1)):
-            #print m_lineBoundaries[i],";",m_lineBoundaries1[j]
-            #currLineTop = m_lineBoundaries[i]
-            #currLineBottom=m_lineBoundaries1[j]
-            #print currLineBottom
-     
+   
     lineImg=cv.CreateImage((rows,cols),cv.CV_8UC3,1)
     channels =[]
     channels.append(img)
@@ -155,36 +118,50 @@ def SplitLinesIntoWords(img,lineB1,lineB2,cols,rows):
     #lineImg=cv2.rectangle(img,0,currLineTop,cols,currLineBottom-currLineTop+1)
     #print currLineTop,";",cols,";",currLineBottom-currLineTop+1
     p1=(0,currLineTop)
-    p2=(cols,currLineBottom-currLineTop+1)
+    p2=(cols,currLineBottom)
+    #cv2.rectangle(img,p1,p2,(0,255,0),3)
+    #lineImg=img
+    #cv2.rectangle(img,p1,p2,(0,255,0),3)
 
     cv2.rectangle(lineImg,p1,p2,cv.CV_RGB(255,0,255),1,cv.CV_AA)
+    #roi=(0,currLineTop,cols,currLineBottom)
+    #cv.SetImageROI(img, roi)
+    #img=img[0:currLineTop,cols:currLineBottom]
+    #cropimg=lineImg[0:currLineTop,currLineBottom-currLineTop+1:cols]
+    #print p1,",",p2
+    
     wordBoundaries = []
-    SplitLine(lineImg,wordBoundaries,cols,rows)
+    #SplitLine(lineImg,wordBoundaries,cols,rows)
+    
+    
+    cv2.imwrite('demo.png',cropimg)
+    cv2.imshow("demo",cropimg)
+    cv2.waitKey()
 
-    #cv2.imwrite('demo.png',lineImg)
+def SplitLine(lineImg1,wordBoundaries,cols,rows):
+    print cols,",",rows
+    
 
-
-
-
-
-def SplitIntoWords(bookimgdirpath,segmentedimgpath,outfile):
+def SplitIntoWords(infiledir,bookimgdirpath,segmentedimgpath,outfile):
     #print bookimgdirpath,segmentedimgpath,outfile
-    SplitIntoLines(bookimgdirpath)
+    SplitIntoLines(infiledir,bookimgdirpath)
     #SplitLinesIntoWords(bookimgdirpath);
     
 
 
 
 
-
-
 print "initialized image Segementer..."
 bookimgdata = []
-with open('segment.json') as f :
+
+infile=sys.argv[1]
+infiledir=sys.argv[2]
+
+with open(infile) as f :
      d=json.load( f )
 
 bookimgdirpath=d['book'] ['imagedirpath']
-bookdirs=os.listdir( bookimgdirpath)
+bookdirs=os.listdir( infiledir+bookimgdirpath)
 
 for bookfilename in bookdirs:
         #print bookfilename
@@ -193,9 +170,9 @@ for bookfilename in bookdirs:
 segmentedimgpath=d['page'] ['segmentedimgpath']  
  
 for i in range(len(bookimgdata)):
-    #print bookimgdata[i]
+    print bookimgdata[i]
     #print (bookimgdirpath+bookimgdata[i])
-    SplitIntoWords(bookimgdirpath+bookimgdata[i],segmentedimgpath,"segmented_res"+bookimgdata[i])
+    SplitIntoWords(infiledir+segmentedimgpath,infiledir+bookimgdirpath+bookimgdata[i],infiledir+segmentedimgpath,"segmented_res"+bookimgdata[i])
 
 
 
