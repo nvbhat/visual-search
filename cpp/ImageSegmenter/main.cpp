@@ -18,7 +18,8 @@ int main(int argc, char **argv)
 		cout << "Could not open image file [" << string(argv[1]) << "]\n";
 		return -1;
 	}else
-		cout << "Read image file [" << string(argv[1]) << "] OK\n";
+    {
+		//cout << "Read image file [" << string(argv[1]) << "] OK\n";
 	
              string imgpath=string(argv[1]);
 	string wordBoundariesFile = string(argv[2]);
@@ -28,5 +29,6 @@ int main(int argc, char **argv)
         //imgSeg.GetImagePath(imgpath);
 	imgSeg.SplitIntoWords(docImage,wordBoundariesFile,imgpath);	
 	//cout << "DONE\n";
-	return 0;
+     }
+ 	return 0;
 }

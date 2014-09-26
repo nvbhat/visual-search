@@ -11,8 +11,11 @@ using namespace std;
 
  void ImageSegmenter::SplitLine(const Mat& img,vector < pair <unsigned int,unsigned int> > &WordBoundaries)
  {
+    //imshow("img",img);
+    // waitKey(0);
+     
 
-	//cout << img.rows << " " << img.cols << endl;
+	cout << img.rows << " " << img.cols << endl;
              
 	/*
 	// Compute expected position of sirorekha bar
@@ -31,7 +34,7 @@ using namespace std;
 	// Make the sirorekha bar continuous
 	//img(Rect(0,maxRowId,img.cols,1)) = Mat::zeros(img.cols,1,CV_8UC1);		
 	*/
-
+         // cout<<"hello"<<endl;
 	vector<unsigned int> col_sums(img.cols,0);
 	unsigned int col_Sum=0;   
     

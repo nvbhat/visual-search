@@ -157,7 +157,7 @@ void ImageSegmenter::SplitLinesIntoWords(const Mat& img)
 imwrite("testimg.png",lineImg);
 //imshow("img",lineImg);
 //waitKey(0);
-       
+       imwrite("testimg.png",lineImg);
 		vector< pair<unsigned int,unsigned int> > wordBoundaries;
 		SplitLine(lineImg,wordBoundaries);	
 		m_wordBoundaries.push_back(wordBoundaries);
