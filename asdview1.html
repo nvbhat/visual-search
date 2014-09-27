@@ -39,8 +39,8 @@
         <script type="text/javascript">
             var svg = d3.select("body")
                 .append("svg")
-                .attr("width","800")
-                .attr("height","600")
+                .attr("width",800)
+                .attr("height",600)
                 .style("border", "1px solid black")
  .append('svg:g')
     .call(d3.behavior.zoom().on("zoom", redraw))
@@ -63,9 +63,7 @@ d3.json("data1.json",
                 .attr("x", "0")
                 .attr("y", "0")
                 .attr("width", "800")
-                .attr("height", "600")
-.attr("preserveAspectRatio","none")
-;
+                .attr("height", "600");
 //Draw the Rectangle
 		 var rectangle = svg.selectAll("rect").data(test.segments)
 			.enter()

@@ -4,6 +4,7 @@
        <script src="http://d3js.org/d3.v2.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
 <style>
 .d3-tip {
   line-height: 1;
@@ -34,13 +35,15 @@
   left: 0;
 }
 </style>
-   </head>
+
+    </head>
     <body>
         <script type="text/javascript">
+
             var svg = d3.select("body")
                 .append("svg")
-                .attr("width","800")
-                .attr("height","600")
+                .attr("width",800)
+                .attr("height",600)
                 .style("border", "1px solid black")
  .append('svg:g')
     .call(d3.behavior.zoom().on("zoom", redraw))
@@ -50,43 +53,83 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>name:</strong> <span style='color:red'>" + d.text + "</span>";});
+    return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";});
 svg.call(tip);
-console.log('hello');
-d3.json("data1.json", 
-    function(error,test) {
-	console.log(test.imagepath);    
-	var imgs = svg.selectAll("image").data([0])
-                .enter()
+// text = svg.selectAll("text")
+  //              .data([0])
+    //            .enter()
+      //          .append("text")
+        //        .text("Testing")
+          //      .attr("x", "40")
+            //    .attr("y", "60");
+
+            var imgs = svg.selectAll("image").data([0]);
+                imgs.enter()
                 .append("svg:image")
-                .attr("xlink:href", test.imagepath)
+                .attr("xlink:href", "P1000626.JPG")
                 .attr("x", "0")
                 .attr("y", "0")
                 .attr("width", "800")
                 .attr("height", "600")
-.attr("preserveAspectRatio","none")
-;
-//Draw the Rectangle
-		 var rectangle = svg.selectAll("rect").data(test.segments)
-			.enter()
-			.append("svg:rect")
-			.attr("class","overlay")
-			.attr("pointer-events", "all")
-			.attr("x", function (d) { return d.geometry.x; } )
-			.attr("y", function (d) { return d.geometry.y; } )
-			.attr("width", function (d) { return d.geometry.width; } )
-			.attr("height", function (d) { return d.geometry.height; } )
-			.style("fill-opacity",0.2)
-			.attr('fill',function (d) { return "blue"; } )
-			.on('mouseover',tip.show)
-			.on('mouseout',tip.hide)
-.on("click",function goToURL() {
-  window.open("form.html");});
-});
+// .append('svg:g')
+//    .call(d3.behavior.zoom().on("zoom", redraw))
+//  .append('svg:g');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //Draw the Rectangle
+ var rectangle = svg.selectAll("rect").data([0])
+.enter()
+.append("svg:rect")
+.attr("class","overlay")
+.attr("pointer-events", "all")
+.attr("x","25")
+.attr("y", "250")
+.attr("width", "180")
+.attr("height", "135")
+.style("fill-opacity",0.2)
+.attr('fill','blue')
+.on('mouseover',tip.show)
+.on('mouseout',tip.hide);
+
+//.append('svg:g')
+//.call(d3.behavior.zoom().on("zoom", redraw))
+//.append('svg:g');
+
+//draw second rectangle
+//svg.append("svg:rect")
+//.attr("class","overlay")
+//.attr("pointer-events", "all")
+//.attr("x","610")
+//.attr("y", "135")
+//.attr("width", "160")
+//.attr("height", "83")
+//.style("fill-opacity",0.2)
+//.attr('fill','red')
+//.on('mouseover',tip.show)
+//.on('mouseout',tip.hide);
+
 function redraw() {
 //console.log("here", d3.event.translate, d3.event.scale);
 svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 } 
+
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
 </script>
     </body>
 </html>
