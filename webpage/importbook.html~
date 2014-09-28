@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1><div style="text-align:left;color:blue;font-size:30px;">Import a Scanned Book</div></h1>
+
+<div style="align:left;">
+<form name="submit">
+
+<!--<button type="button" onclick="upload_book()">Upload an image</button>
+<button type="button" onclick="browse_uploadedbooks()">Browse uploaded images</button>-->
+
+<p>
+Please specify an image file to upload...<br>
+<input type="text" name="textline" size="30">
+</p>
+<input type="file" id="upload" style="display:none">
+<button type="button" onclick="upload_book();return;">Upload an image</button><br><br>
+
+<!--<input type="file" id="uploadedimages" style="display:none">-->
+<button type="button" onclick="browse_uploadedbooks()">Browse uploaded images...</button>
+</form>
+
+
+</div>
+
+<script type="text/JScript">
+function upload_book()
+{
+document.getElementById("upload").click();
+
+}
+
+
+function browse_uploadedbooks() {
+   //document.getElementById("uploadedimages").click(); 
+var thispath="visual-search/images/";
+fso = new ActiveXObject("Scripting.FileSystemObject"); 
+alert("hi");
+
+//var location = document.location.href;
+
+
+}
+
+</script>
+
+</body>
+</html> 
+
