@@ -3,12 +3,12 @@
    <title>Listing Images</title>
     </head>
      <body>
-    <p><div style="text-align:center;color:blue;font-size:20px;">select images from the lists and press the "submit" button</div></p>
-  <form align ="center" method="post" action="select_imgitems.php">
+    <p><div style="text-align:center;color:blue;font-size:20px;">select images from the lists</div></p>
+  <form align ="center" method="post" action="viewbook.php">
     <select  style="width: 400px;" size="18" name="dynamic_data[]" multiple>
     <!--<select name="images[]" multiple>-->
-      <?php // SPECIFY THE DIRECTORY    
-                                                                                           
+      <?php 
+      // SPECIFY THE DIRECTORY                                                                                         
         $images = array();
         $dir = "visual-search/images/"; 
         
@@ -35,23 +35,32 @@
          <?php
          
          }
-        
-         
+                 
          closedir($dirHandle);
          ?>
          
          </select><br>
          <p>
-         Please specify the output file name (for example, book.json)<br>
+         Please specify  a file name  (for example, book.json ) to save the selected image location and press "submit"...<br>
          <input type="text"  name="inputdata" size="30">
          </p>
-         <?php
-           
-         ?>
-         <input style= "font-size: 22px;border: 2px solid #87231C;color: #FF5A51;" type="submit" name="submit" value=submit>
+         <br>
+         <!--<p>
+          Please specify an image filename to save...<br>
+          <input type="text" name="outputimgfiletext" size="30">
+          </p>
+
+          <p>
+          Please specify a json file name for the selected image (example:"filename.json") to save the result...<br>
+          <input type="text" name="jsonresultfiletext" size="30">
+           </p>-->
+
+
+         <input style= "font-size: 22px;border: 2px solid #87231C;color: #FF5A51;" type="submit" name="submit" value=Segment>
         
         </form>
          
        </body>
+ 
        </html>
-               
+           

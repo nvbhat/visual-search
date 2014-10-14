@@ -1,0 +1,6 @@
+{
+"imagepath": "visual-search/images/crop.jpg",
+"Segments":[
+    { 'geometry': { 'x':1013 , 'y':174, 'width':1547, 'height':1746 } }
+]
+}
