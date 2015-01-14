@@ -61,7 +61,9 @@ findMatches(
         else
             break;
     }
-    printf("}\n");
+    //printf("]\n");
+    //printf("}");
+     cout<<endl<<"]"<<endl<<"}"<<endl;
      
     imshow(winName,img_all);
 }
@@ -79,7 +81,7 @@ main(int argc, char **argv)
     cin >> path_to_file;
     cerr << "Give a template image file to locate" << endl;
     cin >> path_to_templateimage_file;
-
+   
 	vector<string> imgfnames;
 	int max=20;
 	Mat img_all[max];
@@ -92,7 +94,7 @@ main(int argc, char **argv)
     struct dirent *file;
 
     string res;
-    dir = opendir(path_to_file);
+    dir = opendir(path_to_file.c_str());
       
     if (dir != NULL) {
         while (file = readdir(dir)) {
@@ -109,7 +111,7 @@ main(int argc, char **argv)
     struct dirent *tempimgfile;
 
     string tempimgres;
-    tempimgdir = opendir(path_to_templateimage_file);
+    tempimgdir = opendir(path_to_templateimage_file.c_str());
 
     if (tempimgdir != NULL) {
         while (tempimgfile = readdir(tempimgdir)) {

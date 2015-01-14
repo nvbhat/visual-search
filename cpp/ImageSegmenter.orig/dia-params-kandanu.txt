@@ -2,7 +2,8 @@
 # Lines starting with # will be ignored
 # 
 # File path to input document image
-document-image-path=Kandanu1.jpg
+#document-image-path=Kandanu1.jpg
+document-image-path=/home/milan/visual-search/examples/Kandanu1.jpg
 #
 # Output granularity
 # (LINES,WORDS)

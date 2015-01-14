@@ -90,8 +90,8 @@ for i in range(len(bookimgdata)):
         f.write(str5) 
         nMatches = nMatches+1
     print "\n]\n","}\n"
-    #cv2.imshow('result',img_rgb)
-    #cv2.waitKey(2000)    
+    cv2.imshow('result',img_rgb)
+    cv2.waitKey(2000)    
     str6="\n]\n}\n"
     f.write(str6)
     

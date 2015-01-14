@@ -2,7 +2,7 @@
 # Lines starting with # will be ignored
 # 
 # File path to input document image
-document-image-path=crop.jpg
+document-image-path=/home/milan/visual-search/examples/crop.jpg
 #
 # Output granularity
 # (LINES,WORDS)

@@ -6,9 +6,9 @@
 int main(int argc, char **argv)
 {
 
-	if ( argc != 3 )
+	if ( argc != 4 )
 	{
-		cout << "Usage:./ImageSegmenter [path-to-image-file] [path-to-word-boundaries-image]\n"; 
+		cout << "Usage:./ImageSegmenter [path-to-image-file] [path-to-word-boundaries-image][path-to-json-file]\n"; 
 		return -1;
 	}
 
@@ -23,11 +23,11 @@ int main(int argc, char **argv)
 	
              string imgpath=string(argv[1]);
 	string wordBoundariesFile = string(argv[2]);
-         
+         string jsonresultfile=string(argv[3]);
 	ImageSegmenter imgSeg;
 	// Process
         //imgSeg.GetImagePath(imgpath);
-	imgSeg.SplitIntoWords(docImage,wordBoundariesFile,imgpath);	
+	imgSeg.SplitIntoWords(docImage,wordBoundariesFile,imgpath,jsonresultfile);	
 	//cout << "DONE\n";
      }
  	return 0;

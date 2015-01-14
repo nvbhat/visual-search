@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-
 #include "ImageSegmenter.h"
 #include "ConfigParser.h"
 

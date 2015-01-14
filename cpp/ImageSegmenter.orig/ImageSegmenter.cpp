@@ -1,5 +1,5 @@
 #include "ImageSegmenter.h"
-#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/imgproc/im gproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/core.hpp>
 #include <iostream>
@@ -26,8 +26,18 @@ ImageSegmenter::ImageSegmenter(const string& config_file_path)
 
 void ImageSegmenter::SaveOutput(const string& output_type)
 {	
+
+    Mat out = Mat::zeros(m_docImage.rows,m_docImage.cols,CV_8UC3);
+	vector<Mat> channels;
+	channels.push_back(m_docImage);
+	channels.push_back(m_docImage);
+	channels.push_back(m_docImage);
+	merge(channels,out);
+
 	ofstream ofs;
 	ofs.open(m_output_file_path, ios::out);
+
+
 	if (!ofs) {
 		cerr << "Could not open output file " << m_output_file_path << " for writing\n";
 		return;
@@ -53,8 +63,14 @@ void ImageSegmenter::SaveOutput(const string& output_type)
 				ss << wordB.first + m_roi_tlx << " " << lineB.first + m_roi_tly << " " << wordB.second + m_roi_tlx << " " << lineB.second + m_roi_tly;
 				lines.push_back(ss.str());
 				ss.str("");
+                               Point p1(wordB.first + m_roi_tlx,lineB.first + m_roi_tly);
+                               Point p2(wordB.second + m_roi_tlx,lineB.second + m_roi_tly);
+                               cv::rectangle(out,p1,p2,Scalar(255,0,255),1,CV_AA,0);
+                               //imshow("Segmented Image", out);		
+		               imwrite("Segment.jpg",out);
 			}
 		}
+                               waitKey(0);
 	}
 
 	// http://stackoverflow.com/a/16330323/482389
