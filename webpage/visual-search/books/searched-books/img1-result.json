@@ -1,0 +1,15 @@
+{
+"imagepath": "../../visual-search/images/user-upload/img1.png,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.png",
+"Segments":[,
+    { "geometry": { "x":283 , "y":7, "height":326, "width":30 } },
+    { "geometry": { "x":281 , "y":101, "height":324, "width":124 } },
+    { "geometry": { "x":48 , "y":489, "height":91, "width":512 } },
+    { "geometry": { "x":60 , "y":78, "height":103, "width":101 } },
+    { "geometry": { "x":51 , "y":393, "height":94, "width":416 } },
+    { "geometry": { "x":272 , "y":416, "height":315, "width":439 } },
+    { "geometry": { "x":270 , "y":479, "height":313, "width":502 } },
+    { "geometry": { "x":278 , "y":228, "height":321, "width":251 } },
+    { "geometry": { "x":282 , "y":7, "height":325, "width":30 } }
+]
+}

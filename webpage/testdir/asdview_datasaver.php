@@ -1,4 +1,14 @@
 
+ <?php
+$jsonbookdir="visual-search/books/Segmented-books/";
+ foreach ($_POST['listallbooks'] as $names)
+{
+     // echo  $segbookdir.$names;
+      echo "Selected book is:".$names;
+      $jsonbookfile=$names;
+}
+  ?>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -44,10 +54,16 @@
    </head>
 
     <body>
-    
-
+              
+                
         <script type="text/javascript">
 
+           var jsonbookdir="<?php echo $jsonbookdir; ?>"; 
+           var jsonbookfile="<?php echo $jsonbookfile; ?>";
+           //alert(jsonbookfile);            
+           var pathtojsonfile="../".concat(jsonbookdir.concat(jsonbookfile));
+           //alert(pathtojsonfile);
+          
             var svg = d3.select("body")
 
                 .append("svg")
@@ -61,11 +77,11 @@
  .append('svg:g')
 
     .call(d3.behavior.zoom().on("zoom", redraw))
-
+    
   .append('svg:g');
 //.attr("preserveAspectRatio","none") ;
 
-
+   
 
 var tip = d3.tip()
 
@@ -80,20 +96,21 @@ var tip = d3.tip()
 svg.call(tip);
 
 console.log('hello');
-
-d3.json("data2.json",function(error,test) {
-
+//document.write(jsonbookfile);
+d3.json(pathtojsonfile,function(error,test) {
+      
         console.log(test.imagepath);
-
+        var imgpath="../".concat(test.imagepath);
+        //alert(test.imagepath);
         var imgs = svg.selectAll("image").data([0])
-
+     
                 .enter()
 
  		.append("svg:image")
 
                 .attr('image-rendering','optimizeQuality')
 
-                .attr("xlink:href", test.imagepath)
+                .attr("xlink:href",imgpath)
 
                 .attr("x", "0")
 
@@ -101,8 +118,8 @@ d3.json("data2.json",function(error,test) {
 
 var img = new Image();
 
-img.src=test.imagepath;
-
+//img.src=test.imagepath;
+img.src=imgpath;
 img.onload=function(){
 
                 var width=this.width;

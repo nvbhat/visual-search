@@ -10,7 +10,7 @@
       <?php 
       // SPECIFY THE DIRECTORY                                                                                         
         $images = array();
-        $dir = "visual-search/images/"; 
+        $dir = "visual-search/images/user-upload/"; 
         
        // OPEN THE DIRECTORY
         $dirHandle = opendir($dir); 
@@ -18,7 +18,8 @@
         $StringSent=urlencode($dir);
         while ($file = readdir($dirHandle)) { 
          // IF IT IS NOT A FOLDER, AND ONLY IF IT IS A .JPG WE ACCESS IT
-          if(!is_dir($file) && strpos($file, '.jpg')>0) {
+         // if(!is_dir($file) && (strpos($file, '.jpg')||strpos($file, '.png'))>0) {
+      if(!is_dir($file) && (strpos($file, '.jpg'))>0) {
            //echo "$file"."<br />";
            $images[]=$file;     
            }
@@ -41,7 +42,7 @@
          
          </select><br>
          <p>
-         Please specify  a file name  (for example, book.json ) to save the selected image location and press "submit"...<br>
+         Please specify  a file name  (for example, book.json ) to save the selected image location <br>
          <input type="text"  name="inputdata" size="30">
          </p>
          <br>
@@ -56,7 +57,7 @@
            </p>-->
 
 
-         <input style= "font-size: 22px;border: 2px solid #87231C;color: #FF5A51;" type="submit" name="submit" value=Segment>
+         <input style= "font-size: 22px;border: 2px solid #87231C;color: #FF5A51;" type="submit" name="submit" value=segment>
         
         </form>
          

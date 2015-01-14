@@ -6,8 +6,8 @@ if((!empty($_FILES["uploaded_file"])) && ($_FILES['uploaded_file']['error'] == 0
   $filename = basename($_FILES['uploaded_file']['name']);
   $ext = substr($filename, strrpos($filename, '.') + 1);
  
-  if (($ext == "jpg") && ($_FILES["uploaded_file"]["type"] == "image/jpeg") &&
-    ($_FILES["uploaded_file"]["size"] < 10485760))
+ // if ((($ext == "jpg")||($ext=="png")) && (($_FILES["uploaded_file"]["type"] == "image/jpeg")||($_FILES["uploaded_file"]["type"] == "image/png")) &&
+   if (($ext == "jpg") && ($_FILES["uploaded_file"]["type"] == "image/jpeg") && ($_FILES["uploaded_file"]["size"] < 10485760))
     {
     
     //Determine the path to which we want to save this file

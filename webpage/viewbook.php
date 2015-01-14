@@ -10,7 +10,7 @@ Image Segmentation
  
 
    <?php
-   $imgdir="visual-search/images/";
+   $imgdir="visual-search/images/user-upload/";
    ?>
 
       <?php
@@ -57,7 +57,7 @@ Image Segmentation
 
    <!-- <p><div style="text-align:left;font-size:24px;">Segmented books are successfully saved</div></p>-->
    
-   <form align ="left" method="post" action="visualtool.php">
+   <form align ="left" method="post" action="testdir/asdview_datasaver.php">
     <p><div style="text-align:left;color:blue;font-size:20px;">Select segmented books from the list</div></p>
    <!-- <select  style="width: 400px;" size="18" name="listallbooks[]" multiple><br>-->
   <!--<input type="submit" style= "font-size: 22px;color: red;" name="submit1" value="view segmented-books" ><br><br>-->
@@ -99,7 +99,7 @@ Image Segmentation
      <input type="submit" style= "font-size: 28px; color: red;" name="submit" value="OK" >
      </form>
 
-   <!-- <form action="imgsegment.php" method="POST">
+   <!--<form action="imgsegment.php" method="POST">
     <p>
     Please specify an image filename to save...<br>
     <input type="text" name="outputimgfiletext" size="30">
