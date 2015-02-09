@@ -81,9 +81,12 @@ printf("\n    {""\"geometry\""": { ""\"x\""": %d, ""\"y\""": %d, ""\"height\""":
 			Point p2(wordB.second,lineB.second);
                       // cout<<p1<<p2<<endl;
 			rectangle(out3,p1,p2,Scalar(255,0,255),1,CV_AA,0);
+                        //imshow("my img",out3);
+                       //waitKey(0);
 		}
 
-        
+        //imshow("myimg",out3);
+               //waitKey(0);
 	}
 
     
@@ -97,7 +100,8 @@ printf("\n    {""\"geometry\""": { ""\"x\""": %d, ""\"y\""": %d, ""\"height\""":
 	imwrite(wordBoundariesFile.c_str(),out3);
 
        
-       // imshow("result image:",out3);
+        //imshow("result image:",out3);
+         //waitKey(0);
        // cout<<wordBoundariesFile.c_str()<<endl;
 }
 
@@ -114,11 +118,11 @@ void ImageSegmenter::SplitIntoLines(const Mat& img)
 {
 	m_docImage = img;
 	//cout << " Rows = " << img.rows << "Cols = " << img.cols << endl;
-             //cv::imshow("image",m_docImage);
+      //cv::imshow("image",m_docImage);
 	// Convert input grayscale image to binary image
 	threshold(img,m_docImage,0,255,CV_THRESH_OTSU);
-          	//imwrite("binary-thresholded.png",m_docImage);
-                // imshow("result",m_docImage);_          
+       //imwrite("binary-thresholded.png",m_docImage);
+                //imshow("result",img);          
 	// Form row histogram of sum-across-columns
 	vector<unsigned int> rowSums(img.rows,0);
    
@@ -148,26 +152,41 @@ void ImageSegmenter::SplitIntoLines(const Mat& img)
 	channels.push_back(m_docImage);
 	merge(channels,out3);
          //imshow("img",out3);
-         
+        
 	for(unsigned int i = 1 ; i < rowSums.size() ;i++) {
 		//cout << "Rowsums: prev[" <<  rowSums.at(i-1) << "] curr[" << rowSums.at(i) << "]" << endl;
 		if ( rowSums.at(i-1) >= m_white_row_threshold && rowSums.at(i) <= m_white_row_threshold ) 
+		
 			lineTop = i;
+		        //cout<<"LineTop:"<<lineTop<<endl;
+		
 		else if ( rowSums.at(i-1) <= m_white_row_threshold && rowSums.at(i) >=  m_white_row_threshold ) {
 			lineBottom = i;
+			//cout<<"Line Bottom:"<<lineBottom<<endl;
 			pair<unsigned int,unsigned int> lineB;
 			lineB.first = lineTop;
 			lineB.second = lineBottom;
-                       // cout<<lineB.first<<endl;
+                        //cout<<lineB.first<<":"<<lineB.second<<endl;
+			
 			m_lineBoundaries.push_back(lineB);
 			//cout << "Line: " << lineTop << " " << lineBottom << endl;
 			// Draw and verify rectangle
-			Point p1(0,lineTop);
+                        //cout<<"size:"<<m_lineBoundaries.size()<<endl;
+			
+                        //for(int i=0;i<=m_lineBoundaries.size();i++)
+                         //{
+                            
+                          //}
+                        Point p1(0,lineTop);
 			Point p2(img.cols-1,lineBottom);
 			rectangle(out3,p1,p2,Scalar(255,0,255),1,CV_AA,0);
+                        //cout<<"point p1:"<<p1<<";"<<"point p2:"<<p2<<endl;
+                         //imshow("myimage",out3);
+                          //waitKey(0);
+
 		}
 	}
-	//cout << "DONE\n";
+         //cout << "DONE\n";
 	//imwrite("linerect.png",out3);
 	//exit(1);
 
@@ -175,6 +194,9 @@ void ImageSegmenter::SplitIntoLines(const Mat& img)
 
 void ImageSegmenter::SplitLinesIntoWords(const Mat& img)
 {
+
+	//imshow("image",m_docImage);
+	//waitKey(0);
 	//ofstream outfile;
       //  outfile.open("rectangle_result.txt");
 	// Scan the line boundaries array and for each entry
@@ -184,6 +206,7 @@ void ImageSegmenter::SplitLinesIntoWords(const Mat& img)
 		pair<unsigned int,unsigned int> currLineBoundaries = m_lineBoundaries.at(i);
 //cout<<m_lineBoundaries.at(i)<<endl;
 //cout<<currLineBoundaries.first<<endl;
+		
 		unsigned int currLineTop = currLineBoundaries.first;
 		unsigned int currLineBottom = currLineBoundaries.second;
                 
@@ -192,13 +215,15 @@ void ImageSegmenter::SplitLinesIntoWords(const Mat& img)
 	     //cout << "Line: " << currLineTop << " " << currLineBottom << endl;
               // outfile<<"Rect [0,"<<currLineTop<<","<<m_docImage.cSplitLineols<<","<<currLineBottom-currLineTop+1<<"]"<<endl;
 	//cout << "Rect [0," << currLineTop << "," << m_docImage.cols << "," << currLineBottom-currLineTop+1 << "]" << endl; 
+		
 		Mat lineImg(m_docImage,cv::Rect(0,currLineTop,m_docImage.cols,currLineBottom-currLineTop+1));
 //cout<<currLineTop<<";"<<m_docImage.cols<<";"<<currLineBottom-currLineTop+1<<endl;
-//imwrite("visual-search/images/segmented-images/testimg.png",lineImg);
+//imwrite("test11.jpg",lineImg);
 //imshow("img",lineImg);
 //waitKey(0);
        
 		vector< pair<unsigned int,unsigned int> > wordBoundaries;
+                
 		SplitLine(lineImg,wordBoundaries);	
 		m_wordBoundaries.push_back(wordBoundaries);
 	}

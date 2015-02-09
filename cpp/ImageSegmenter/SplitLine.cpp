@@ -15,7 +15,7 @@ using namespace std;
     // waitKey(0);
      
 
-	cout << img.rows << " " << img.cols << endl;
+   //cout << img.rows << " " << img.cols << endl;
              
 	/*
 	// Compute expected position of sirorekha bar
@@ -30,7 +30,6 @@ using namespace std;
 			maxRowId = row;
 		}
 	}
-
 	// Make the sirorekha bar continuous
 	//img(Rect(0,maxRowId,img.cols,1)) = Mat::zeros(img.cols,1,CV_8UC1);		
 	*/
@@ -106,3 +105,4 @@ using namespace std;
 	WordBoundaries.push_back(wordB);
          
  }
+
