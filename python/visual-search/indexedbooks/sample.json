@@ -14,7 +14,11 @@
     "author": "", 
     "imagedirpath": "./visual-search/indexedbooks/", 
     "images": [
-      "/home/milan/visual-search/examples/1.jpg"
+      "../examples/samplebook/img1.png", 
+      "../examples/samplebook/img2.png", 
+      "../examples/samplebook/img3.png", 
+      "../examples/samplebook/img4.png", 
+      "../examples/samplebook/img5.png"
     ], 
     "pages": [], 
     "title": ""

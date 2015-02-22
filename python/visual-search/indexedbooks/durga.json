@@ -14,7 +14,7 @@
     "author": "", 
     "imagedirpath": "./visual-search/indexedbooks/", 
     "images": [
-      "visual-search/images/test.jpg"
+      "../examples/search-images/durgachalisa_original.jpg"
     ], 
     "pages": [], 
     "title": ""

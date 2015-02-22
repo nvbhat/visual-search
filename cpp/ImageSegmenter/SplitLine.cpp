@@ -101,8 +101,17 @@ using namespace std;
 		}
 		++currId;
 	}
+	
 	pair<unsigned int,unsigned int> wordB = WordBoundariesTemp.at(WordBoundariesTemp.size()-1);
+         
 	WordBoundaries.push_back(wordB);
+
+       /*for(int i=0;i<WordBoundaries.size();i++)
+	         {
+	cout<<"WB[ist]:-->"<<WordBoundaries[i].first<<" "<<"WB[2nd]:-->"<<WordBoundaries[i].second<<endl;
+	          }*/
+
+
          
  }
 

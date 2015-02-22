@@ -94,5 +94,5 @@ print "Successfully saved!!!"
 #print arr
 for i in arr:
     #print i
-    shutil.copy(i, 'visual-search/user-uploads')
+    shutil.copy(i, 'visual-search/user-uploads/')
 print "images successfully copied"

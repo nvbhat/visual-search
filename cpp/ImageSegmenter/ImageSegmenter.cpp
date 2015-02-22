@@ -33,6 +33,11 @@ void ImageSegmenter::DisplayWordBoundaries(const string& wordBoundariesFile,stri
 	merge(channels,out3);
     ofstream resultFile;
      ofstream myfile;
+   /*for (int i=0;i<m_wordBoundaries.size();i++)
+   {
+     cout<<"ist:"<<m_wordBoundaries[i].first<<" "<<"2nd:"<<m_wordBoundaries[i].second<<endl;
+    }*/
+
 // char imgfilename[jsonresultfile.size()+1];
  //strcpy(imgfilename,jsonresultfile.c_str());   
   //char* str;
@@ -47,6 +52,7 @@ void ImageSegmenter::DisplayWordBoundaries(const string& wordBoundariesFile,stri
        //myfile.open ((imgfname_withoutext+jsonstr).c_str());
            //myfile << "Writing this to a file.\n";
              //myfile.close();
+      cout<<"SIZE:"<<m_lineBoundaries.size()<<endl;
      myfile.open(jsonresultfile.c_str());
         cout<<"{"<<endl<<"\"imagepath\""<<": \""<<path<<"\","<<endl<<
                        "\"segments\""<<":"<<"[";
@@ -56,12 +62,16 @@ void ImageSegmenter::DisplayWordBoundaries(const string& wordBoundariesFile,stri
           //resultFile.open("result_rect_layout.json");
          //  char path[50]="path to image ";
            // cout<<"{"<<endl<<"file"<<":"<<path<<","<<endl<<"}"<<endl;
+         
 	for(unsigned int i = 0 ; i < m_wordBoundaries.size() ; i++) {
+		
 		vector< pair<unsigned int,unsigned int> > wordBVec = m_wordBoundaries.at(i);
+              
 		pair<unsigned int,unsigned int> lineB = m_lineBoundaries.at(i);
+                        
 		for(unsigned int j = 0 ; j < wordBVec.size() ; j++) {
 			pair<unsigned int,unsigned int> wordB = wordBVec.at(j);
-          
+                        //cout<<"wordB.first:"<<wordB.first<<endl;
 			if((i+j)>0)
             {
 				printf(",");
@@ -226,7 +236,18 @@ void ImageSegmenter::SplitLinesIntoWords(const Mat& img)
                 
 		SplitLine(lineImg,wordBoundaries);	
 		m_wordBoundaries.push_back(wordBoundaries);
-	}
+                 
+                              // cout<<"Data:"<<m_lineBoundaries[i].first<<endl;
+                         
+                 
+               for(int i=0;i<wordBoundaries.size();i++)
+		  {
+		 cout<<"WB[ist]:-->"<<wordBoundaries[i].first<<" "<<"WB[2nd]:-->"<<wordBoundaries[i].second<<endl;
+         
+                //cout<<"Size->:"<<m_wordBoundaries.size()<<endl;
+            	}
+
+   }
          
 		//outfile.close();
 }

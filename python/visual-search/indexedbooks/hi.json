@@ -12,9 +12,9 @@
   "book": {
     "annotations": [], 
     "author": "", 
-    "imagedirpath": "./indexedbooks/", 
+    "imagedirpath": "./visual-search/indexedbooks/", 
     "images": [
-      "visual-search/images/Kandanu1.jpg"
+      "../examples/search-images/sample_hindi_01.png"
     ], 
     "pages": [], 
     "title": ""
