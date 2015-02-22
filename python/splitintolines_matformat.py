@@ -109,6 +109,8 @@ def DisplayWordBoundaries(img,segbookfilename):
     f.write(str5)
     cv2.imwrite("visual-search/segmented-images/"+resultimgname[2],out3)
     f.close()
+    cv2.imshow("result",out3)
+    cv2.waitKey()
     
       
     
