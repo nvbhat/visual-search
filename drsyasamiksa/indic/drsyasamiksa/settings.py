@@ -78,7 +78,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = '/var/www/resources/media'
+MEDIA_ROOT = '/var/www/visual-search-resources/media'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
