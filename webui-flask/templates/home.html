@@ -1,0 +1,333 @@
+{% extends "templates.html" %}
+{% block content %}
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://d3js.org/d3.v2.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="/scripts/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/test_asdview.js"></script>
+<style type="text/css">
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.hd{
+	position:absolute;
+	top:8%;
+	left:2%;
+	font-size:13pt;
+	font-style:bold-italic;
+}
+.upload_btn{
+	position:relative;
+	top:20%;
+	left:-5%
+	right:14%;
+}
+
+.thumbnail{
+	margin-bottom:3px;
+	margin-left:-10px;
+	margin-right:-10px;
+	margin-top:3px;
+}
+.pics{
+	position:absolute;
+	top:12%;
+	left:24%;
+}
+#upg{
+position:relative;
+left:-17%;
+top:20px;
+}
+.bl{
+	position:absolute;
+	top:20%;
+	left:2%;
+}
+table{
+	border-spacing: 2px;
+	font-size:12pt;
+	text-align: center;
+}
+table, th, td {
+    border: 1px solid gray;
+}
+#prvw{
+	position:relative;
+	top:-1%;
+	left:-5%;
+	width:960px;
+	height:480px;
+	border: thin solid gray;
+	text-align: center;
+	overflow-x:auto;
+	overflow-y:auto;
+}
+
+#thumview{
+	position:absolute;
+	top:104%;
+	left:6%;
+	width:740px;
+	height:150px;
+	border: thin solid gray;
+	text-align:center;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+#thumgp{
+	width:680px;
+}
+#tscrol{
+	position:relative;
+	top:0px;
+	left:0%;
+	width:40%;
+	height:500px;
+	border: thin solid gray;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+/*if tag is class then->css is .tag| is tag is id then-> css is #tag*/
+.imgs{
+    margin: 1px;
+	padding: 1px;
+	border: 1px solid #0000af;
+	width: 116px;
+	height: 100px;
+	float: left;
+	text-align: center;
+	opacity: 0.75;
+	filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+li {
+    display: inline;
+}
+</style>
+<!-- JQuery script for toggles thumbnail and booklist -->
+<script>
+$(document).ready(function(){
+    $("bkl").click(function(){
+        $("#bk1").toggle();
+    });
+});
+</script>
+<!-- preview fetch javascript -->
+<script type=text/javascript>
+
+function clickedimg(img)
+{
+	var clicked=img.src;
+	json=clicked.split("/");
+	n=json.length;
+	n1=json[n-1];
+	ext="_coordinates.json";
+	inter=n1.split(".");
+	final=inter[0]+ext;
+	var segmentedfile_path = $.getJSON($SCRIPT_ROOT + '/segment', 
+		{ pass: clicked.toString() } 
+		/*
+                function(data) {
+	      	    $("#result").text(data.result);
+	            //var nvb = $("p").html({{ result }});
+	        }
+		*/
+	 	);
+
+	$("#prvw").empty();
+	var svg = d3.select(".pics")
+			.select("#prvw")
+			.append("svg")
+			.attr("width","960")
+			.attr("height","900")
+		       // .style("border", "1px solid black")
+		 	.call(d3.behavior.zoom().on("zoom", redraw));
+	//.attr("preserveAspectRatio","none") ;
+
+	var tip = d3.tip()
+		  .attr('class', 'd3-tip')
+		  .offset([-10, 0])
+		  .html(function(d) {
+	    return "<strong>name:</strong> <span style='color:red'>" + d.text + "</span>";});
+	svg.call(tip);
+
+	console.log('hello');
+	console.log(final);
+
+	d3.json("http://localhost:5000/static/visual-search/segmented-books/"+final,
+                function(error,test) 
+                {
+			console.log(test.imagelocation);
+			var imgs = svg.selectAll("image").data([0])
+				.enter()
+				.append("svg:image")
+				.attr('image-rendering','optimizeQuality')
+				.attr("xlink:href", test.imagelocation)
+				.attr("x", "0")
+				.attr("y", "0");
+
+			var img = new Image();
+			img.src=test.imagelocation;
+			img.onload=function(){
+					var width=this.width;
+					var height=this.height;
+				    imgs.attr("width", width)
+					.attr("height",height);
+			}
+			//Draw the Rectangle
+			 var rectangle = svg.selectAll("rect").data(test.segments)
+				.enter()
+				.append("svg:rect")
+				.attr("class","overlay")
+				.attr("pointer-events", "all")
+				.attr("x", function (d) { return d.geometry.x; } )
+				.attr("y", function (d) { return d.geometry.y; } )
+				.attr("width", function (d) { return d.geometry.height; } )
+				.attr("height", function (d) { return d.geometry.width; } )
+				.style("fill-opacity",0.2)
+				.attr('fill',function (d) { return "blue"; } )
+				.on('mouseover',tip.show)
+				.on('mouseout',tip.hide)
+		                .on("click",function goToURL() {
+			  		window.open("/form");
+				    });
+		}
+	);
+}
+
+function redraw(svg) 
+{
+	//console.log("here", d3.event.translate, d3.event.scale);
+	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
+
+</script>
+<script type=text/javascript>
+var jsonfile= $("p").html({{ result }});
+</script>
+ <p><span id=result></span></p>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<!--
+===========================================================================================
+Html contains 
+===========================================================================================
+-->
+<p id=res>{{ result }}</p>
+<div class="hd">
+	<p><br>Welcome to Visual search tool !!!<br/></p>
+	<!--<p>Click <a href="/welcome">here </a> to go to the welcome page</p>-->
+</div>
+<!--Book List code -->
+<div class="bl">
+	<p style="font-size:14pt;font-style:bold;font-family:Blagovest"><b>Book List</b></p>
+<!-- Upload function-->
+	<div>
+        <a href='/uploadbook'><button class="btn btn-primary btn-xs" type="button" style="font-size:16px; color:#66FF00"><b>Add Book</b></button></a>
+	</div><br/>
+<!-- BookListing Code -->
+	<div id="tscrol">
+		<table width="300px" height="140px">
+			<div class="row"> <tr>
+				<!-- <div class="row">  -->
+					<div class="row-md-1">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> <!-- href="klematis_big.htm"> is used for DB stored file-->
+							<img src="{{ url_for('static', filename='visual-search/images/Kandanu1.jpg') }}" 
+							alt="BookList" onerror="this.src='{{ url_for('static', filename='vsual-ssearch//images/no-img.jpg')}}'"
+							width="115px" height="80px"><!-- width="185px" height="140px" -->
+						</a>
+					</div> 
+					<!-- end of 1st book. -->
+				<!-- </div> -->
+			</tr></div>
+		</table>
+	</div> <!-- Scroll table ends-->
+</div>
+<!-- Preview code--> 
+<div class="pics">
+	<div id="prvw">
+	<img id="prv" src="Dynamic"
+		 alt="Image Preview"
+		 onerror="this.src='{{url_for('static', filename='visual-search/images/no-pre.jpg')}}'" width="940">
+	</div>
+<!-- =========================================================================== -->
+<!-- thumbnail views Code -->
+	<div id="collapse1">
+		<div id="thumview">
+			<div class="col"> 
+				<div class="col-lg-2 col-sm-3 col-xs-4">
+					<a target="_blank" class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
+
+						<img onclick="clickedimg(this)" id="bkl1" src="{{ url_for('static', filename='visual-search/images/P1000395.jpg') }}" alt="No Images"
+
+							onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
+
+					</a>
+				</div>
+			</div>
+			<div class="col"> 
+				<div class="col-lg-2 col-sm-3 col-xs-4">
+					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
+						<img onclick="clickedimg(this)" id="bkl2" src="{{ url_for('static',  filename='visual-search/images/P1000396.jpg') }}"  alt="No Images"
+						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
+					</a>
+				</div>
+			</div>
+			<div class="col"> 
+				<div class="col-lg-2 col-sm-3 col-xs-4">
+					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
+						<img onclick="clickedimg(this)" id="bkl3" src="{{ url_for('static', filename='visual-search/images/P1000397.jpg') }}" alt="No Images"
+						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive" >
+					</a>
+				</div>
+			</div>
+			<div class="col"> 
+				<div class="col-lg-2 col-sm-3 col-xs-4">
+					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
+						<img onclick="clickedimg(this)" id="bkl4" src="{{ url_for('static', filename='visual-search/images/Kandanu1.jpg') }}"') }}" 
+						alt="No Images"
+						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+  <div>
+<!--        <a id="upg" href='/upload'><button class="btn btn-primary btn-xs" type="button" style="font-size:16px; color:#F6FF00">Upload a page</button></a>-->
+<a href='/uploadpage'><button class="btn btn-primary btn-xs" type="button" style="font-size:16px; color:#F6FF00">Upload a page</button></a>
+        </div>
+</div>
+
+</body>
+
+{% endblock %}

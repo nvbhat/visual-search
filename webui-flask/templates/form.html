@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type"></meta>
+<meta content="utf-8" http-equiv="encoding"></meta>
+<link rel="stylesheet" href="css/bootstrap.css"  type="text/css"/>
+<link rel="stylesheet" href="css/style.css"  type="text/css"/>
+<link rel="stylesheet" href="css/bootstrap-select.css"  type="text/css"/>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.json-2.4.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+   <script src="js/bootstrap-select.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+  
+   
+</head>
+
+ <script type="text/javascript">
+        $(window).on('load', function () {
+
+            $('.selectpicker').selectpicker({
+                'selectedText': 'cat'
+            });
+
+            // $('.selectpicker').selectpicker('hide');
+        });
+
+</script>
+<body>
+<div class="well well-sm" style="text-align:center">
+<h3> Share your knowledge here</h3>
+</div>
+<div class="container col-md-8">
+      <form action="form_process.php" method="POST" class="myfirstform aux | grep apache2 | less role="form">
+	<!--  
+		<legend>Contact Form</legend>		-->
+		<div class="form-group">
+	        <label class="control-label">Name</label>
+			<div class="controls">
+			    <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>	
+	<input type="text" class="form-control" name="name" placeholder="Name">
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="form-group">
+	        <label class="control-label">Email</label>
+			<div class="controls">
+			    <div class="input-group">
+				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+					<input type="text" class="form-control" id="email" name="email" placeholder="Email">
+				</div>
+			</div>	
+		</div>
+		
+		<div class="form-group ">
+	        <label class="control-label">Language</label>
+			<div class="controls">
+		 <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+			<select name="cate" class="form-control selectpicker  show-tick" > <option> Samskrutam</option>
+					<option> Kannada</option>
+					<option> English </option>
+					</select>
+					
+				</div>
+				</div>
+		</div>
+		
+		<div class="form-group ">
+	        <label class="control-label">Message</label>
+			<div class="controls">
+			    <div class="input-group">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+					<textarea name="msg" class="form-control " rows="4" cols="78" placeholder="Enter your message here"></textarea>
+
+				</div>
+			</div>
+		</div>
+		
+		
+		
+	      <div class="controls" style="margin-left: 40%;">
+		  
+	       <button type="submit" id="mybtn"  class="btn btn-primary" >Submit</button>
+	        
+	      </div>
+		</form>
+		</div>
+</body>
+</html>
