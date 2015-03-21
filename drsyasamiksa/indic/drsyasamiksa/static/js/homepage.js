@@ -24,7 +24,7 @@ MstrMngr.onClickBook = function() {
 			loader:'/static/img/ajax-loader.gif'
 		};
 	var GALLERY_ID = "#mygallery-" + this.id;
-
+        //alert(GALLERY_ID);
 	switch(this.id) {
 	    case 'book1':
 	    	$("#mygallery-book2").css("display", "none");
@@ -38,6 +38,27 @@ MstrMngr.onClickBook = function() {
 	    	$("#mygallery-book1").css("display", "none");
 			$("#mygallery-book2").css("display", "none");
 	        break;
+
+
+                case 'booktest':
+                   var val="/var/www/visual-search-resources/media/booktest/Kandanu.json";
+                    var bookval=val.toString();
+                   //alert(val);
+                     
+		     $.ajax({
+			                 url: "/homepage/",
+			                 type: "post",
+			                 data: {book: "milan"},
+			                 success: function(response) {
+						               //  alert(response)
+			                 }
+		             })
+		             
+                             //alert("hello");
+       		 $("#mygallery-book4").css("display", "none");
+		       $("#mygallery-book3").css("display", "none");
+			break;
+
 	}
 	$(GALLERY_ID).css("display", "block");
 	$(GALLERY_ID).tiksluscarousel(tixOptions);

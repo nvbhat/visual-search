@@ -12,7 +12,7 @@ using namespace cv;
 ImageSegmenter::ImageSegmenter()
 {
 	m_white_row_threshold = 0;
-	m_white_row_fill_factor = 1.0;
+	m_white_row_fill_factor = 0.99;
 
 	m_white_col_threshold = 0;
 	m_white_col_fill_factor = 1.0;

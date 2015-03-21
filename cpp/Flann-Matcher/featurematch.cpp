@@ -129,7 +129,7 @@ int main( int argc, char** argv )
             // do something with the best points...
           // cout<<"point p1:"<<point1<<"point p2:"<<point2<<"point p3:"<<point3<<endl;
        rectangle(out3,point1,point2,Scalar(255,0,255),1,CV_AA,0);
-//drawKeypoints(img_1, keypoints_1,img_2,keypoints_2,Scalar::all(-1),		                   DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
+//drawKeypoints(img_1, keypoints_1,img_2,keypoints_2,Scalar::all(-1),DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
       //imshow("Good Match",out3);
       //waitKey(0);
        imwrite("match.jpg",out3);      

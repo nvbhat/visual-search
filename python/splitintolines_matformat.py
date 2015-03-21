@@ -7,16 +7,16 @@ import json
 import cv
 import argparse
 #http://opencv.jp/opencv-2svn_org/py/cookbook.html
+
 obj = parameters.Parameters()
 
 def SplitIntoLines(img):		 
-    print "first method worked"
+    print "image segmenter starts..."
     
     docImg =cv2.imread( img,cv2.CV_LOAD_IMAGE_GRAYSCALE )
     #cv2.imshow("image",docImg)
     #cv2.waitKey(2000)
    
-
     ret, otsu =cv2.threshold(docImg,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
     rows,cols = docImg.shape
     rowSums = []
@@ -107,7 +107,7 @@ def DisplayWordBoundaries(img,segbookfilename):
     print "DONE"
     str5="\n]\n}\n"
     f.write(str5)
-    cv2.imwrite("visual-search/segmented-images/"+resultimgname[2],out3)
+    #cv2.imwrite("visual-search/segmented-images/"+resultimgname[2],out3)
     f.close()
     cv2.imshow("result",out3)
     cv2.waitKey()
@@ -192,7 +192,7 @@ def SplitLine(m_lineImage,wordBoundaries1 ,wordBoundaries2):
 #Second method ---"SplitLinesIntoWords(image)" starts ---
 def SplitLinesIntoWords(img):
     print "inside 2nd method..."
-    #print img
+    print "split into words:",img
     
 
     greyimg = cv.LoadImageM(img, cv.CV_LOAD_IMAGE_GRAYSCALE)
@@ -211,18 +211,12 @@ def SplitLinesIntoWords(img):
         p2=(greyimg.cols,currLineBottom)
 
         m_lineImage = cv.GetSubRect(m_docImage,(0,currLineTop,m_docImage.cols,currLineBottom-currLineTop+1))
-        #cv.SaveImage("lineImage.jpg",m_lineImage)
+        cv.SaveImage("lineImage.jpg",m_lineImage)
 	wordBoundaries1 = []
 	wordBoundaries2 = []
 
         SplitLine(m_lineImage,wordBoundaries1,wordBoundaries2)
-        #obj.m_wordBoundaries.append(wordBoundaries1)
-        #obj.m_wordBoundaries.append(wordBoundaries2)
-        #obj.m_wordBoundaries.append(obj.m_lineBoundaries1)
-        #obj.m_wordBoundaries.append(obj.m_lineBoundaries2)
-	#obj.m_wordBoundaries = [wordBoundaries1,wordBoundaries2,obj.m_lineBoundaries1[i],obj.m_lineBoundaries2[i]]
 
-	
         for k in range(len(wordBoundaries1)):
 	    obj.m_wordBoundaries1.append(wordBoundaries1[k])
             obj.m_wordBoundaries2.append(wordBoundaries2[k])

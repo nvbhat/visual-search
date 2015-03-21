@@ -70,9 +70,12 @@
 	  <div class="scrollWrap">
 	  <div id="bookList" data-id="browse" class="tab-content browse is-active">
 		<ol>
-		  <li id="book1"><a>Book 1</a></li>
+		 
+                  <li id="book1"><a>Book 1</a></li>
 		  <li id="book2"><a>Book 2</a></li>
 		  <li id="book3"><a>Book 3</a></li>
+		  <li id="booktest"><a>Kandanu.json</a></li>
+                 
 	    </ol>
 	  </div>  
 	  </div>
@@ -94,7 +97,7 @@
 		</div>
 		<p>
 			<a title="Visual Search" href="/" sl-processed="1"> <img alt="" src="{{ MEDIA_URL }}Indic_Visual_Search.jpg" style="max-height:30px;">
-			</a>
+		        </a>
 		</p>
 		<div class="search">
 			<form class="search-wrap" action="/search">
@@ -174,6 +177,12 @@
 			<img src="{{ MEDIA_URL }}book1/o12.jpg" />
 		  </span>
 		</li>
+                 
+		 <li>
+		  <span class='zoom' id='o13'>
+		   <img src="{{ MEDIA_URL }}book1/crop.jpg" />
+		  </span>
+                  </li>
 	  </ul>
 	</div>
     
@@ -236,7 +245,7 @@
 		</li>
 		<li>
 		  <span class='zoom' id='o12'>		
-			<img src="{{ MEDIA_URL }}book2/o12.jpg" />
+	 		<img src="{{ MEDIA_URL }}book2/o12.jpg" />
 		  </span>			
 		</li>
 	  </ul>
@@ -305,8 +314,21 @@
 		  </span>			
 		</li>
 	  </ul>
-    </div>
-	
+  </div>
+
+       <div id="mygallery-booktest" style="display:none;height:500px;">
+	<ul>
+          <li>
+	  <span class='zoom' id='o1'>
+	 <!--<img src="{{ MEDIA_URL }}booktest/crop.jpg" />-->
+          
+          </span>
+          </li>
+
+	</ul>
+       
+          </div>
+
  <!--    <div id="desc">
 	<p>Description</p>
     </div> -->
@@ -325,10 +347,11 @@ $(document).ready(function () {
 
 	myLayout = $('body').layout({
 		// enable showOverflow on west-pane so popups will overlap north pane
-		west__showOverflowOnHover:	true
+		west__showOverflowOnHover: true
 		, class: "ui-layout-center"
 	});
-
+        
+    
 	
 });
 

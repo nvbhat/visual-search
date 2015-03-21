@@ -3,7 +3,7 @@
 # 
 # File path to input document image
 #document-image-path=Kandanu1.jpg
-document-image-path=/home/milan/visual-search/examples/Kandanu1.jpg
+document-image-path=o10.jpg
 #
 # Output granularity
 # (LINES,WORDS)
@@ -20,7 +20,7 @@ white-row-fill-factor=1.0
 white-column-fill-factor=0.9 
 #
 # Minimum horizontal gap in pixels between two words
-minimum-inter-word-gap=1
+minimum-inter-word-gap=1.0
 # 
 # Image borders can contain noise. To handle this, 'white'-en the borders around the image
 whiten-band-width=15

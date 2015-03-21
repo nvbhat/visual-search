@@ -25,6 +25,7 @@ with open( jsonfile ) as f :
 allimages = []
 allimages = d['book']['images']
 
+
 def SplitIntoWords(docImg,segbookfilename):
      #print "hello"
      listimg = []
@@ -35,7 +36,7 @@ def SplitIntoWords(docImg,segbookfilename):
          splitintolines_matformat.DisplayWordBoundaries(listimg[i],segbookfilename)
          
 
-for i in range(0,len(allimages)):
+for i in range(len(allimages)):
     #print allimages[i]
     SplitIntoWords(allimages[i],segbookfilename)
 
