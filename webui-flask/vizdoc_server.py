@@ -1,32 +1,20 @@
 import os
 import requests
 from os import path
-from flask import Flask,g,render_template, url_for,request,jsonify
 from flask.ext.pymongo import PyMongo
-import markdown
-import re
-#from bson import json_util
-#from bson.objectid import ObjectId
-#from pymongo import MongoClient,Connection
 from flask import *
 from functools import wraps
 import json,time
 from werkzeug import secure_filename
 #import datetime
-import imagestojson
 from vizdoc_config import *
-#UPLOAD_FOLDER = '/home/vtbhat/vsearch_db/public'
-#UPLOAD_FOLDER = 'http://localhost:5000/uploads'
+
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','zip'])
 app = Flask(__name__)
-mongo = PyMongo(app)
+# connect to another MongoDB database on the same host
+app.config['MONGO2_DBNAME'] = 'vizdoc_db'
+mongo = PyMongo(app, config_prefix='MONGO2')
  
-#app.config['UPLOAD_FOLDER'] = "/home/vtbhat/vsearch_db"
-global res
-UPLOAD_FOLDER = '/home/vtbhat/visual-search/vsearch_db/public/'
-#PUBSTORE = 
-#print UPLOAD_FOLDER
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -83,10 +71,7 @@ def getBook(bookid):
         print "processing " + bookid
         fname = PUBSTORE+"/books/"+bookid+".json"
         print fname
-        with open(fname) as f:
-#            bookjson=json.load(f)
-            print "something"
-            return send_from_directory(PUBSTORE+"/books",bookid+".json")
+	return send_from_directory(PUBSTORE+"/books",bookid+".json")
 
 @app.route('/uploadpage', methods=['GET', 'POST'])
 def upload_file():
@@ -125,10 +110,9 @@ def uploaded_files(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
-@app.route('/uploads', defaults={'req_path': UPLOAD_FOLDER}) #'/home/vtbhat/vsearch_db'})
 @app.route('/<path:req_path>')
 def dir_listing(req_path):
-    BASE_DIR = UPLOAD_FOLDER #'/home/vtbhat/vsearch_db'
+    BASE_DIR = ROOTDIR  #'/home/vtbhat/vsearch_db'
 
     # Joining the base and the requested path
     abs_path = os.path.join(BASE_DIR, req_path)
@@ -193,11 +177,32 @@ def login():
            return redirect(url_for('hello'))
     return render_template('login.html',error=error)
 
-@app.route('/getFile/<path:filepath>')
+@app.route('/static/<path:filepath>')
 def getFile(filepath):
     abspath = ROOTDIR + "/" + filepath
     print abspath
     return send_file(abspath)
+
+@app.route('/saveanno',methods=['GET','POST'])
+def saveanno():
+    impath = request.args.get('imagepath',type=str)
+    coord = request.args.get('coord',type=str)
+    mongo.db.annotations.update(
+        {'file': impath, 'coord': coord},
+        {'ratings': request.get('ratings'), 'name': request.get('name'), 
+                    'text': request.get('text'), 'comment': request.get('comment')},
+        safe=True, upsert=True)
+
+@app.route('/getanno',methods=['GET','POST'])
+def getanno():
+    impath = request.args.get('imagepath',type=str)
+    coord = request.args.get('coord',type=str)
+    anno = mongo.db.annotations.find_one(
+        {'file': impath, 'coord': coord})
+    return anno 
+#        {'ratings': request.get('ratings'), 'name': request.get('name'), 
+#                    'text': request.get('text'), 'comment': request.get('comment')},
+#        safe=True, upsert=True)
 
 """      
 @app.route('/<path:pagepath>')
@@ -263,7 +268,8 @@ def getAnnotation(page):
 
 @app.route('/segment',methods=['GET','POST'])
 def segment():
-    jsonfile = imagestojson.jsonfile
+    from imagestojson import *
+    jsonfile = jsonfile
     clicked_image = request.args.get('imagepath',type=str)
     dividing = clicked_image.split('/')
     extract = dividing[-1].split('.')
@@ -286,8 +292,6 @@ if __name__ == '__main__':
     doctest.testmod()
 #    app.run(debug=True)
     app.run(host = '0.0.0.0',debug=True)  
-
-#def saveAnnotation
 
 #def getAnnotations
 

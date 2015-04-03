@@ -6,7 +6,7 @@ import json
 import os, sys
 import shutil
 import re
-from route import * 
+from vizdoc_server import * 
 #Usage->python imagetojson.py image1,image2,image3....(input one or more images)
 
 #for i in range(1, len(sys.argv)):
@@ -18,7 +18,7 @@ from route import *
 #rm = req.split('.')
 #final = rm[0]
 #print final
-jsonfile = "temporary.json" 
+jsonfile = "static/segments_template.json" 
 #print sys.argv[1]
 #writing data to json file manually ......
 print "writing data to json file..."

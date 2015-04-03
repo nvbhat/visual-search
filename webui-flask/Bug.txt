@@ -1,7 +1,0 @@
-Bug.[]
-when clikcing on home tab in upload page.
-the server goes end session and logout from the page.
-"check for login link in home page"
-try to run after login n click upload/add button..
-And click the home tab in upload page.(page will logout) automatically.
-===========================================================================

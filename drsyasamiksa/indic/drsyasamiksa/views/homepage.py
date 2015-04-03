@@ -11,6 +11,6 @@ from django.http import HttpResponse
    #return render_to_response('homepage_tix_zoom.html', context_instance=RequestContext(request))
 
 class HomepageView(generic.TemplateView):
-      template_name = 'homepage_tix_zoom.html'
+      template_name = 'homepage.html'
 
    

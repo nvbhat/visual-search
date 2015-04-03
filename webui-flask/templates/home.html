@@ -154,8 +154,8 @@ function clickedimg(img)
 	n1=json[n-1];
 	ext="_coordinates.json";
 	inter=n1.split(".");
-	numjson=inter[0]+ext;
-	textjsonpath ="http://localhost:5000/static/visual-search/annotations/"+inter[0]+"_texts.json";
+	coordjson=inter[0]+ext;
+	textjsonpath ="~/vsearch_db/public/segments/"+inter[0]+"_texts.json";
 	var jsonfile_path1 = $.getJSON($SCRIPT_ROOT + '/booksegment',
 		{ imagepath: clicked.toString()
 		} 
@@ -195,9 +195,9 @@ function clickedimg(img)
 	svg.call(tip);
 
 	console.log('hello');
-	console.log(numjson);
+	console.log(coordjson);
 
-	d3.json("http://localhost:5000/static/visual-search/segmented-books/"+numjson,
+	d3.json("~/vsearch_db/public/segments/"+numjson,
                 function(error,test) 
                 {
 			console.log(test.imagelocation);
@@ -234,8 +234,8 @@ function clickedimg(img)
 		                .on("click",function goToURL(om) {
 					jsondata = [om.geometry.x,om.geometry.y,om.geometry.height,om.geometry.width];
  					alert(jsondata);
-					var nvb = $.getJSON($SCRIPT_ROOT + '/coords', 
-			                { pass3: jsondata.toString()
+					var coordinates = $.getJSON($SCRIPT_ROOT + '/coords', 
+			                { coord: jsondata.toString()
                 			} 
                 			/*
                				function(data) {
@@ -244,7 +244,7 @@ function clickedimg(img)
                 			}
                 			*/
                 			);
-			  		location.href="/edit/";
+			  		location.href="/getanno";
 				    });
 		}
 	);
@@ -287,9 +287,8 @@ Html contains
 				<!-- <div class="row">  -->
 					<div class="row-md-1">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-							<img src="{{ url_for('static', filename='visual-search/images/Kandanu1.jpg') }}" 
-							alt="BookList" onerror="this.src='{{ url_for('static', filename='vsual-ssearch//images/no-img.jpg')}}'"
-							width="115px" height="80px"><!-- width="185px" height="140px" -->
+							<img src='/static/public/images/upanishad1.jpg' 
+							alt="BookList" width="115px" height="80px"><!-- width="185px" height="140px" -->
 						</a>
 					</div> 
 					<!-- end of 1st book. -->
