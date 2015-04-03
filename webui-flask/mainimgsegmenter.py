@@ -6,6 +6,7 @@ import json
 import cv
 import argparse
 import splitintolines_matformat
+import vizdoc_server 
 #import splitintolines_updated
 
 ap = argparse.ArgumentParser()
@@ -16,6 +17,7 @@ ap.add_argument("-b", "--book", required = True,
 		help = "give a json file name to store the segmented result(ex:->filename.json)")
 
 
+print 
 args = vars(ap.parse_args())
 jsonfile = args["json"]
 segbookfilename = args['book']

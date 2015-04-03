@@ -1,9 +1,12 @@
 {% extends "templates.html" %}
 {% block content %}
+<!--  <script src="http://d3js.org/d3.v2.js"></script>-->
+  <script type="text/javascript" src="/static/js/d3.v2.js"></script>
+<!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+<script type="text/javascript" src="/static/js/d3.v3.min.js"></script>
+<!--<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>-->
+<script type="text/javascript" src="/static/js/d3.tip.v0.6.3.js"></script>
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="http://d3js.org/d3.v2.js"></script>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <script src="/scripts/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/bootstrap/js/test_asdview.js"></script>
@@ -151,9 +154,11 @@ function clickedimg(img)
 	n1=json[n-1];
 	ext="_coordinates.json";
 	inter=n1.split(".");
-	final=inter[0]+ext;
-	var segmentedfile_path = $.getJSON($SCRIPT_ROOT + '/segment', 
-		{ pass: clicked.toString() } 
+	numjson=inter[0]+ext;
+	textjsonpath ="http://localhost:5000/static/visual-search/annotations/"+inter[0]+"_texts.json";
+	var jsonfile_path1 = $.getJSON($SCRIPT_ROOT + '/booksegment',
+		{ imagepath: clicked.toString()
+		} 
 		/*
                 function(data) {
 	      	    $("#result").text(data.result);
@@ -161,6 +166,16 @@ function clickedimg(img)
 	        }
 		*/
 	 	);
+	var jsonfile_path2 = $.getJSON($SCRIPT_ROOT + '/editform', 
+                { pass2: textjsonpath.toString()
+                } 
+                /*
+                function(data) {
+                    $("#result").text(data.result);
+                    //var nvb = $("p").html({{ result }});
+                }
+                */
+                );
 
 	$("#prvw").empty();
 	var svg = d3.select(".pics")
@@ -180,9 +195,9 @@ function clickedimg(img)
 	svg.call(tip);
 
 	console.log('hello');
-	console.log(final);
+	console.log(numjson);
 
-	d3.json("http://localhost:5000/static/visual-search/segmented-books/"+final,
+	d3.json("http://localhost:5000/static/visual-search/segmented-books/"+numjson,
                 function(error,test) 
                 {
 			console.log(test.imagelocation);
@@ -216,19 +231,30 @@ function clickedimg(img)
 				.attr('fill',function (d) { return "blue"; } )
 				.on('mouseover',tip.show)
 				.on('mouseout',tip.hide)
-		                .on("click",function goToURL() {
-			  		window.open("/form");
+		                .on("click",function goToURL(om) {
+					jsondata = [om.geometry.x,om.geometry.y,om.geometry.height,om.geometry.width];
+ 					alert(jsondata);
+					var nvb = $.getJSON($SCRIPT_ROOT + '/coords', 
+			                { pass3: jsondata.toString()
+                			} 
+                			/*
+               				function(data) {
+                   			$("#result").text(data.result);
+		                    	//var nvb = $("p").html({{ result }});
+                			}
+                			*/
+                			);
+			  		location.href="/edit/";
 				    });
 		}
 	);
-}
 
-function redraw(svg) 
+function redraw() 
 {
 	//console.log("here", d3.event.translate, d3.event.scale);
 	svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 }
-
+}
 </script>
 <script type=text/javascript>
 var jsonfile= $("p").html({{ result }});
@@ -323,8 +349,8 @@ Html contains
 		</div>
 	</div>
   <div>
-<!--        <a id="upg" href='/upload'><button class="btn btn-primary btn-xs" type="button" style="font-size:16px; color:#F6FF00">Upload a page</button></a>-->
-<a href='/uploadpage'><button class="btn btn-primary btn-xs" type="button" style="font-size:16px; color:#F6FF00">Upload a page</button></a>
+<!--        <a id="upg" href='/upload'><button class="btn btn-primary btn-xs" type="button" style="font-size:16px; color:#F6FF00">Upload a page</button></a>
+<a href='/uploadpage'><button class="btn btn-primary btn-xs" type="button" style="font-size:16px; color:#F6FF00">Upload a page</button></a>-->
         </div>
 </div>
 

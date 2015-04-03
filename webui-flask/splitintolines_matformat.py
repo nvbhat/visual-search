@@ -6,10 +6,10 @@ import numpy as np
 import json
 import cv
 import argparse
+import route;
 #http://opencv.jp/opencv-2svn_org/py/cookbook.html
 
 obj = parameters.Parameters()
-
 def SplitIntoLines(img):		 
     print "image segmenter starts..."
     print img
@@ -85,7 +85,7 @@ def DisplayWordBoundaries(img,segbookfilename):
 #    imageloc="http://
     str1=  "\n{\n    \"imagepath\": "+"\""+bookdir+"\""+"," 
     f.write(str1)
-    str2="\n    \"imagelocation\": "+"\"http://localhost:5000/"+img+"\""+","
+    str2="\n    \"imagelocation\": "+"\"http://127.0.0.1:5000/"+img+"\""+","
     f.write(str2) 
     str3= "\n    \"segments\":[\n"
     f.write(str3)
