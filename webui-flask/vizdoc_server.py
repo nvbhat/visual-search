@@ -20,7 +20,6 @@ mongo = PyMongo(app)
 # connect to another MongoDB database on the same host
 #app.config['MONGO2_DBNAME'] = 'vizdoc_db'
 #mongo = PyMongo(app, config_prefix='MONGO2')
-global clicked_image
 
 def allowed_file(filename):
    return '.' in filename and \
@@ -180,12 +179,12 @@ def login():
 @app.route('/getbooklist')
 def filelist():
     arr=[]
-    for root, dirs, files in os.walk(ROOTDIR):
+    for root, dirs, files in os.walk(ROOTDIR+"/books"):
     #print('Found directory: %s' % root)
         for file in files:
             if file.endswith(".json"):
                  abspath = os.path.join(root,file) 
-                 newfile = str.replace(abspath, ROOTDIR+"/", "");
+                 newfile = str.replace(abspath, ROOTDIR+"/books", "");
                  print (newfile)
                  sendpath=newfile
                  data=sendpath[1]
@@ -205,11 +204,24 @@ def filelist():
     d['paths']=arr
     json.dumps(d)
     print (d)
-    with open(ROOTDIR + "/" + jsonfile, 'w') as outfile:
+    with open(ROOTDIR + "/books" + jsonfile, 'w') as outfile:
         json.dump(d, outfile, sort_keys = True, indent = 4,ensure_ascii=False)
     # print (s'Successfully saved!')
 #    return (d)
-    return send_from_directory(ROOTDIR,jsonfile)
+    return send_from_directory(ROOTDIR+"/books",jsonfile)
+
+@app.route('/delannoimgcoord/<image>',methods=['GET','POST'])
+@app.route('/delannoimgcoord/<image>/<coord>',methods=['GET','POST'])
+def delannoimgcord(coord,image=None):
+    mongo.db.pages.remove({"imagepath" : image, "coord": coord})
+    print "success"
+    
+@app.route('/delannoimg/<image>',methods=['GET','POST'])
+def delannoimg(image):
+    mongo.db.pages.remove({"imagepath" : image})
+    print "success"
+
+    
 
 @app.route('/static/<path:filepath>')
 def getFile(filepath):
@@ -227,7 +239,7 @@ def getBook(bookid):
 
 @app.route('/saveanno',methods=['GET','POST'])
 def saveanno():
-    impath = request.args.get('imagepath',type=str)
+    impath = request.args.get('pagepath',type=str)
     coord = request.args.get('coord',type=str)
     mongo.db.annotations.update(
         {'file': impath, 'coord': coord},
@@ -237,42 +249,23 @@ def saveanno():
 
 #def getcontent():
      
-@app.route('/<path:pagepath>')
+@app.route('/form/<path:pagepath>')
 def show_page(pagepath):
-    page = mongo.db.pages.find_one_or_404({'_id': pagepath})
+    page = mongo.db.pages.find({'_id': pagepath})
+    print page
     return render_template('form.html',
         page=page,
         pagepath=pagepath)
 
-@app.route('/edit/<path:pagepath>', methods=['GET'])
-def edit_page(pagepath):
-    page = mongo.db.pages.find_one_or_404({'_id': pagepath})
-    return render_template('form.html',
-        page=page,
-        pagepath=pagepath)
-
-
-@app.route('/edit/<path:pagepath>', methods=['POST'])
-@app.route('/edit/<path:pagepath>/<coords>', methods=['POST'])
-def save_page(pagepath,coords):
+@app.route('/form/<coords>',methods=['GET','POST'])
+@app.route('/form/<coords>/<image>',methods=['GET','POST'])
+def save_page(coords,image=None):
     if 'submit' in request.form:
-        mongo.db.pages.update(
-            {'_id': coords},
+        mongo.db.annotations.update(
+            {'imagepath': image, 'coords': coords},
             {'$set': {'ratings': request.form['ratings'], 'name': request.form['name'], 'text': request.form['text'], 'com': request.form['com']}},
             safe=True, upsert=True)
     return redirect(url_for('show_page', pagepath=pagepath))
-
-@app.errorhandler(404)
-def new_form(error):
-    pagepath = clicked_image 
-    print pagepath
-    coords = request.args.get('pass3',type=str)
-    if not coords == "None":
-        res = coords
-    print res
-#    print coords
-    if not pagepath.startswith('uploads'):
-        return render_template('form.html', page=None, pagepath=pagepath)
 
 @app.route('/getpage/<page>', methods=['GET','POST'])
 def getpage(page):
@@ -326,7 +319,16 @@ def segment():
             rv2 = os.system("python mainimgsegmenter.py -j static/"+jsonfile+" -b "+finaljson) 
     else:
         print "file already exists"
-    return jsonify(result=jsonpathi) 
+    return jsonify(result=jsonpath) 
+
+@app.route('/form')
+def form():
+    image = request.args.get('image')
+    print image
+    coords = request.args.get('coords')
+    print coords
+    return render_template('form.html',page=None,image=image,coords=coords)
+
 
 if __name__ == '__main__':
     import doctest
