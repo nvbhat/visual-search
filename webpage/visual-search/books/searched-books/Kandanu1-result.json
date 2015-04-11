@@ -1,0 +1,12 @@
+{
+"imagepath": "../../visual-search/images/user-upload/Kandanu1.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":129 , "y":261, "height":198, "width":295 } },
+    { "geometry": { "x":129 , "y":260, "height":198, "width":294 } },
+    { "geometry": { "x":1009 , "y":637, "height":1078, "width":671 } },
+    { "geometry": { "x":486 , "y":1109, "height":555, "width":1143 } },
+    { "geometry": { "x":982 , "y":722, "height":1051, "width":756 } },
+    { "geometry": { "x":849 , "y":380, "height":918, "width":414 } }
+]
+}
