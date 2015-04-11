@@ -7,6 +7,7 @@ import os, sys
 import shutil
 import re
 from vizdoc_server import * 
+from vizdoc_config import *
 #Usage->python imagetojson.py image1,image2,image3....(input one or more images)
 
 #for i in range(1, len(sys.argv)):
@@ -18,7 +19,7 @@ from vizdoc_server import *
 #rm = req.split('.')
 #final = rm[0]
 #print final
-jsonfile = "static/segments_template.json" 
+jsonfile = "segments_template.json" 
 #print sys.argv[1]
 #writing data to json file manually ......
 print "writing data to json file..."
@@ -26,7 +27,7 @@ d={
   "book": {
     "title": "",
     "author": "",
-    "imagedirpath": "./static/visual-search/user-uploads/",
+    "imagedirpath": "./static/images/",
      "images":[],
     "pages": [],
     "annotations" : []
@@ -92,13 +93,14 @@ for i in range(1, len(sys.argv)):
 d['book']['images']=arr
 json.dumps(d)
 
-with open('static/visual-search/indexedbooks/'+jsonfile, 'w') as outfile:
+with open('static/'+jsonfile, 'w') as outfile:
      json.dump(d, outfile, sort_keys = True, indent = 2,ensure_ascii=False)
 print "Successfully saved!!!"  
+print "end of First script"
 
 #Save all argument-images in a folder("user-uploads") locally to display further
 #print arr
-for i in arr:
+#for i in arr:
     #print i
-    shutil.copy(i, 'static/visual-search/user-uploads')
-print "images successfully copied"
+#    shutil.copy(i, 'static/visual-search/user-uploads')
+#print "images successfully copied"

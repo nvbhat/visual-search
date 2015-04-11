@@ -12,8 +12,10 @@
   "book": {
     "annotations": [], 
     "author": "", 
-    "imagedirpath": "./static/visual-search/user-uploads/", 
-    "images": [], 
+    "imagedirpath": "./static/images/", 
+    "images": [
+      "static/images/upanishad1.jpg"
+    ], 
     "pages": [], 
     "title": ""
   }, 
