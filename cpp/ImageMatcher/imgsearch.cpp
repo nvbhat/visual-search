@@ -44,7 +44,7 @@ int main(int argc,char** argv)
                 ref, 
                 maxloc, 
                 cv::Point(maxloc.x + tpl.cols, maxloc.y + tpl.rows),           
-                CV_RGB(0,255,0),2
+                CV_RGB(255,0,0),2
             );
            cv::floodFill(res, maxloc, cv::Scalar(0), 0, cv::Scalar(.1), cv::Scalar(1.));
           
@@ -68,7 +68,7 @@ int main(int argc,char** argv)
             
     }
      cout<<endl<<"]"<<endl<<"}"<<endl;
-
+    cv::imwrite("result.jpg",ref);
     cv::imshow("Result Image", ref);
     cv::waitKey();
     return 0;

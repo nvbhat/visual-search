@@ -46,6 +46,17 @@ for i in range(0,len(allimages)):
     thresh = cv2.adaptiveThreshold(gray,255,1,1,11,2)
     thresh_color = cv2.cvtColor(thresh,cv2.COLOR_GRAY2BGR)
 
+    #kernel = np.ones((2, 2),np.uint8)
+    #thresh = cv2.dilate(thresh,kernel,iterations = 3)
+    #thresh = cv2.erode(thresh,kernel,iterations = 2)
+
+    #Create a new image of the same size of the starting image
+    #height, width = gray.shape
+    #newimg = np.zeros((height, width, 3), np.uint8)
+    #Canny edge detector
+    #threshval = 175
+    #edges = cv2.Canny(gray, threshval, threshval*2)
+    #contours,hierarchy = cv2.findContours(edges,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
     # apply some dilation and erosion to join the gaps
     thresh = cv2.dilate(thresh,None,iterations = 3)
     thresh = cv2.erode(thresh,None,iterations = 2)
@@ -62,9 +73,9 @@ for i in range(0,len(allimages)):
     # For each contour, find the bounding rectangle and draw it
     for cnt in contours:
         x,y,w,h = cv2.boundingRect(cnt)
-        cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
 
-        cv2.rectangle(thresh_color,(x,y),(x+w,y+h),(0,255,0),2)
+        cv2.rectangle(thresh_color,(x,y),(x+w,y+h),(0,0,255),2)
          
 	if ( nMatches != 0 ):
            outfile.write(",")
@@ -79,6 +90,7 @@ for i in range(0,len(allimages)):
 
     #Finally show the image
     cv2.imshow('img',img)
+    cv2.imwrite("result.jpg",img)
     #cv2.imshow('res',thresh_color)
     cv2.waitKey(0)
     #cv2.destroyAllWindows()

@@ -12,7 +12,7 @@ obj = parameters.Parameters()
 
 def SplitIntoLines(img):		 
     print "image segmenter starts..."
-    
+    print img
     docImg =cv2.imread( img,cv2.CV_LOAD_IMAGE_GRAYSCALE )
     #cv2.imshow("image",docImg)
     #cv2.waitKey(2000)
@@ -31,7 +31,7 @@ def SplitIntoLines(img):
         rowSums=rowSum/255
 	for i in np.nditer(rowSums):
             rowSums1.append(i)
-    obj.m_white_row_threshold = cols * obj.m_white_row_fill_factor
+    obj.m_white_row_threshold += cols * obj.m_white_row_fill_factor
    
     size = rows, cols,3
     out3=cv.CreateImage((rows,cols),cv.CV_8UC3,3) 
@@ -40,12 +40,14 @@ def SplitIntoLines(img):
     channels.append(otsu)
     channels.append(otsu)
     out3=cv2.merge(channels)
-  
+    lineTop = 0
     for i in range(1,len(rowSums1)):
 	    if ( rowSums1[i-1] >= obj.m_white_row_threshold and rowSums1[i] <= obj.m_white_row_threshold ):
-	       lineTop = i
+	         lineTop = i
+                 
             elif (rowSums1[i-1] <= obj.m_white_row_threshold and rowSums1[i] >=  obj.m_white_row_threshold ):
                  lineBottom = i
+                 
 	         lineB = [lineTop,lineBottom]
 		 
                  obj.m_lineBoundaries1.append(lineB[0])
@@ -63,6 +65,7 @@ def SplitIntoLines(img):
 
 def DisplayWordBoundaries(img,segbookfilename):
     
+    #print "Segbookfile:",segbookfilename
     docImg =cv2.imread( img,cv2.CV_LOAD_IMAGE_GRAYSCALE )
     ret, m_docImage =cv2.threshold(docImg,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
     rows,cols = m_docImage.shape
@@ -72,11 +75,15 @@ def DisplayWordBoundaries(img,segbookfilename):
     channels.append(m_docImage)
     channels.append(m_docImage)
     out3=cv2.merge(channels)
+    
+    splitsegbookfname=segbookfilename.split(".json")
+    segimgname=splitsegbookfname[0]+".jpg"
     bookdir="visual-search/segmented-books/"
     f= open(bookdir+segbookfilename,'w')
     
-    resultimg=str(img)
-    resultimgname=resultimg.split("/")
+    #print segimgname
+    #resultimg=str(img)
+    #resultimgname=resultimg.split("/")
     #print resultimgname[2]
 
 
@@ -107,11 +114,12 @@ def DisplayWordBoundaries(img,segbookfilename):
     print "DONE"
     str5="\n]\n}\n"
     f.write(str5)
-    #cv2.imwrite("visual-search/segmented-images/"+resultimgname[2],out3)
+    cv2.imwrite("visual-search/segmented-images/"+segimgname,out3)
     f.close()
-    cv2.imshow("result",out3)
-    cv2.waitKey()
-    
+    #cv2.imshow("result",out3)
+    #cv2.waitKey()
+    print "visual-search/segmented-images/"+segimgname
+    obj.segimgname="visual-search/segmented-images/"+segimgname
       
     
 def SplitLine(m_lineImage,wordBoundaries1 ,wordBoundaries2):
@@ -211,7 +219,7 @@ def SplitLinesIntoWords(img):
         p2=(greyimg.cols,currLineBottom)
 
         m_lineImage = cv.GetSubRect(m_docImage,(0,currLineTop,m_docImage.cols,currLineBottom-currLineTop+1))
-        cv.SaveImage("lineImage.jpg",m_lineImage)
+        #cv.SaveImage("lineImage.jpg",m_lineImage)
 	wordBoundaries1 = []
 	wordBoundaries2 = []
 
