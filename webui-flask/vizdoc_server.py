@@ -16,15 +16,14 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','zip'])
 
 app = Flask(__name__)
 #mongo = PyMongo(app, config_prefix='MONGO2')
-#mongo = PyMongo(app)
+mongo = PyMongo(app)
 # connect to another MongoDB database on the same host
-app.config['MONGO2_DBNAME'] = 'vizdoc_db'
-mongo = PyMongo(app, config_prefix='MONGO2')
+#app.config['MONGO2_DBNAME'] = 'vizdoc_db'
+#mongo = PyMongo(app, config_prefix='MONGO2')
+global clicked_image
 
-print "Before registering APIs"
- 
 def allowed_file(filename):
-    return '.' in filename and \
+   return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 #@app.route('/upload', methods=['GET', 'POST'])
@@ -199,7 +198,6 @@ def filelist():
     return json.dumps(arr)
 
 
-"""
     jsonfile = "filelist.json"
     d={
         "paths": ""
@@ -212,7 +210,6 @@ def filelist():
     # print (s'Successfully saved!')
 #    return (d)
     return send_from_directory(ROOTDIR,jsonfile)
-"""
 
 @app.route('/static/<path:filepath>')
 def getFile(filepath):
@@ -240,7 +237,6 @@ def saveanno():
 
 #def getcontent():
      
-"""      
 @app.route('/<path:pagepath>')
 def show_page(pagepath):
     page = mongo.db.pages.find_one_or_404({'_id': pagepath})
@@ -257,6 +253,7 @@ def edit_page(pagepath):
 
 
 @app.route('/edit/<path:pagepath>', methods=['POST'])
+@app.route('/edit/<path:pagepath>/<coords>', methods=['POST'])
 def save_page(pagepath,coords):
     if 'submit' in request.form:
         mongo.db.pages.update(
@@ -267,7 +264,7 @@ def save_page(pagepath,coords):
 
 @app.errorhandler(404)
 def new_form(error):
-    pagepath = request.path.lstrip('/')
+    pagepath = clicked_image 
     print pagepath
     coords = request.args.get('pass3',type=str)
     if not coords == "None":
@@ -276,7 +273,6 @@ def new_form(error):
 #    print coords
     if not pagepath.startswith('uploads'):
         return render_template('form.html', page=None, pagepath=pagepath)
-"""
 
 @app.route('/getpage/<page>', methods=['GET','POST'])
 def getpage(page):
@@ -311,38 +307,32 @@ def getanno(coord,imagepath=None):
 #        safe=True, upsert=True)
 
 
-
-"""
 @app.route('/segment',methods=['GET','POST'])
 def segment():
     from imagestojson import *
     jsonfile = jsonfile
     clicked_image = request.args.get('imagepath',type=str)
+    print clicked_image
     dividing = clicked_image.split('/')
     extract = dividing[-1].split('.')
     imgname = extract[0]
-    print imgname
-    print res
     extension = "_segments.json"
     finaljson =  extract[0]+extension
-    jsonpath = "/static/visual-search/segmented-books/"+finaljson
+    jsonpath = "/static/segments/" + finaljson
     if not path.exists(jsonpath):
-        rv1 = os.system("python imagestojson.py static/visual-search/images/"+dividing[-1]) 
+        rv1 = os.system("python imagestojson.py static/images/"+dividing[-1]) 
         if rv1 == 0: 
+            print "one script is succssful"
             rv2 = os.system("python mainimgsegmenter.py -j static/"+jsonfile+" -b "+finaljson) 
     else:
         print "file already exists"
-    return jsonify(result=jsonpath) 
-
-"""
-
-
-print "After registering APIs"
+    return jsonify(result=jsonpathi) 
 
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-    app.run(host = '0.0.0.0',debug=True)  
+    app.run(debug=True)
+#    app.run(host = '0.0.0.0',debug=True)  
 
 #def getAnnotations complete
 

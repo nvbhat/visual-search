@@ -1,4 +1,4 @@
-{% extends "templates.html" %}
+{% extends "log_template.html" %}
 {% block content %}
 <!--  <script src="http://d3js.org/d3.v2.js"></script>-->
   <script type="text/javascript" src="/static/js/d3.v2.js"></script>
@@ -155,7 +155,7 @@ function clickedimg(img)
 	ext="_coordinates.json";
 	inter=n1.split(".");
 	numjson=inter[0]+ext;
-	textjsonpath ="http://127.0.0.1:5000/static/visual-search/annotations/"+inter[0]+"_texts.json";
+	textjsonpath ="http://localhost:5000/static/visual-search/annotations/"+inter[0]+"_texts.json";
 	var jsonfile_path1 = $.getJSON($SCRIPT_ROOT + '/segment', 
 		{ pass1: clicked.toString()
 		} 
@@ -166,7 +166,7 @@ function clickedimg(img)
 	        }
 		*/
 	 	);
-	var jsonfile_path2 = $.getJSON($SCRIPT_ROOT + '/editform', 
+	var jsonfile_path2 = $.getJSON($SCRIPT_ROOT + '/form_process', 
                 { pass2: textjsonpath.toString()
                 } 
                 /*
@@ -197,7 +197,7 @@ function clickedimg(img)
 	console.log('hello');
 	console.log(numjson);
 
-	d3.json("http://127.0.0.1:5000/static/visual-search/segmented-books/"+numjson,
+	d3.json("http://localhost:5000/static/visual-search/segmented-books/"+numjson,
                 function(error,test) 
                 {
 			console.log(test.imagelocation);
@@ -277,8 +277,8 @@ Html contains
 				<!-- <div class="row">  -->
 					<div class="row-md-1">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-							<img src="{{ url_for('static', filename='visual-search/images/Kandanu1.jpg') }}" 
-							alt="BookList" onerror="this.src='{{ url_for('static', filename='vsual-ssearch//images/no-img.jpg')}}'"
+							<img src="{{ url_for('static', filename='images/Kandanu1.jpg') }}" 
+							alt="BookList" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'"
 							width="115px" height="80px"><!-- width="185px" height="140px" -->
 						</a>
 					</div> 
@@ -293,7 +293,7 @@ Html contains
 	<div id="prvw">
 	<img id="prv" src="Dynamic"
 		 alt="Image Preview"
-		 onerror="this.src='{{url_for('static', filename='visual-search/images/no-pre.jpg')}}'" width="940">
+		 onerror="this.src='{{url_for('static', filename='images/no-pre.jpg')}}'" width="940">
 	</div>
 <!-- =========================================================================== -->
 <!-- thumbnail views Code -->
@@ -303,7 +303,7 @@ Html contains
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank" class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
 
-						<img onclick="clickedimg(this)" id="bkl1" src="{{ url_for('static', filename='visual-search/images/P1000395.jpg') }}" alt="No Images"
+						<img onclick="clickedimg(this)" id="bkl1" src="{{ url_for('static', filename='images/P1000395.jpg') }}" alt="No Images"
 
 							onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
 
@@ -313,7 +313,7 @@ Html contains
 			<div class="col"> 
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-						<img onclick="clickedimg(this)" id="bkl2" src="{{ url_for('static',  filename='visual-search/images/P1000396.jpg') }}"  alt="No Images"
+						<img onclick="clickedimg(this)" id="bkl2" src="{{ url_for('static',  filename='images/P1000396.jpg') }}"  alt="No Images"
 						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
 					</a>
 				</div>
@@ -321,7 +321,7 @@ Html contains
 			<div class="col"> 
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-						<img onclick="clickedimg(this)" id="bkl3" src="{{ url_for('static', filename='visual-search/images/P1000397.jpg') }}" alt="No Images"
+						<img onclick="clickedimg(this)" id="bkl3" src="{{ url_for('static', filename='images/P1000397.jpg') }}" alt="No Images"
 						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive" >
 					</a>
 				</div>
@@ -329,7 +329,7 @@ Html contains
 			<div class="col"> 
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-						<img onclick="clickedimg(this)" id="bkl4" src="{{ url_for('static', filename='visual-search/images/Kandanu1.jpg') }}"') }}" 
+						<img onclick="clickedimg(this)" id="bkl4" src="{{ url_for('static', filename='images/Kandanu1.jpg') }}"') }}" 
 						alt="No Images"
 						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
 					</a>

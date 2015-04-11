@@ -6,7 +6,7 @@ import numpy as np
 import json
 import cv
 import argparse
-import route;
+from vizdoc_config import *
 #http://opencv.jp/opencv-2svn_org/py/cookbook.html
 
 obj = parameters.Parameters()
@@ -57,7 +57,6 @@ def SplitIntoLines(img):
 		 
     print "first method worked"
     
-    
 
 
 
@@ -75,7 +74,7 @@ def DisplayWordBoundaries(img,segbookfilename):
     out3=cv2.merge(channels)
     splitsegbookfname=segbookfilename.split(".json")
     segimgname=splitsegbookfname[0]+".jpg"
-    bookdir="static/visual-search/segmented-books/"
+    bookdir= "static/segments/"
     f= open(bookdir+segbookfilename,'w')
     
     #print segimgname
@@ -112,12 +111,12 @@ def DisplayWordBoundaries(img,segbookfilename):
     print "DONE"
     str5="\n]\n}\n"
     f.write(str5)
-    cv2.imwrite("visual-search/segmented-images/"+segimgname,out3)
+    cv2.imwrite("static/segmented-images/"+segimgname,out3)
     f.close()
     #cv2.imshow("result",out3)
     #cv2.waitKey()
-    print "visual-search/segmented-images/"+segimgname
-    obj.segimgname="visual-search/segmented-images/"+segimgname
+    print "static/segmented-images/"+segimgname
+    obj.segimgname="static/segmented-images/"+segimgname
       
     
 def SplitLine(m_lineImage,wordBoundaries1 ,wordBoundaries2):
