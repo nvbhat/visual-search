@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta name="viewport" content="width = 1050, user-scalable = no" />
+
+	<link type="text/css" rel="stylesheet" href="/static/css/layout-default-latest.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/owl.carousel.css">
+	<link type="text/css" rel="stylesheet" href="/static/css/owl.theme.css">
+<!-- 	<link type="text/css" rel="stylesheet" href="/static/css/animate.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/normalize.css" /> -->
+	<link type="text/css" rel="stylesheet" href="/static/css/zirsaka.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/ajJAvali.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/NewFile.css" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="http://jcrop-cdn.tapmodo.com/v2.0.0-RC1/css/Jcrop.css" type="text/css" />
+
+	<style type="text/css">
+	/**
+	 *	ALL CSS below is only for cosmetic and demo purposes
+	 *	Nothing here affects the appearance of the layout
+	 */
+
+	body {
+		font-family: Arial, sans-serif;
+		font-size: 0.85em;
+	}
+	p { position:absolute; top:3px; right:28px; color:#555; font:bold 13px/1 sans-serif;}
+
+#book-cntr .item{
+  display: block;
+  cursor: pointer;
+  background: #7fc242;
+  padding: 30px 0px;
+  margin: 5px;
+  color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+}
+#book-cntr .item:hover{
+  background: #F2CD00;
+}
+#book-cntr .item img{
+  display: block;
+  height: auto;
+  max-height: 200px;
+  max-width: 220px;
+}
+
+#slctdPage {
+	width: 100%;
+}
+#slctdPage img{
+	max-width: 100%;
+	top: 350px;
+}
+
+#slctdImg {
+	width: 100%;
+}
+
+.sgmntnOverlay {
+	border: 1px solid #cccccc;
+	display: block;
+    position: absolute;
+	top: 355px;
+}
+.sgmntnOverlay g {
+	left: 0px;
+	top: 0px;
+}
+
+.img-selector {
+  background-color: blue;
+  display: block;
+  float: right;
+  height: 150px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 5px;
+  z-index: 100;
+}
+
+.img-selector .clicked {
+  background-color: green;
+}
+
+		.zoom img::selection { background-color: transparent; }
+#content {width:620px; margin:0px auto;}
+#desc {margin:10px; float:left; font-family: Arial, sans-serif; font-size: 12px;}
+	/*
+	 *	Rules below are for simulated drop-down/pop-up lists
+	 */
+
+
+	</style>
+
+	
+</head>
+<body>
+
+<!-- allowOverflow auto-attached by option: west__showOverflowOnHover = true -->
+<div class="ui-layout-west">
+	<div id="ajjavali">
+	  <div class="accordion-header">Browse Catalogue</div>
+	  <div class="add-new-book">Add New Book</div>
+	  <div class="scrollWrap">
+	  <div id="bookList-cntr" data-id="browse" class="tab-content browse is-active">
+	  </div>
+	  </div>
+	</div>
+</div>
+
+<div class="ui-layout-center">
+	<div id="zirsaka">
+		<!--<div class="hamburger icon-sidebar" title="Press 'm' to show or hide the menu">Menu</div>-->
+		<div title="Press 'm' to show or hide the menu" class="hamburger">
+			<svg xml:space="preserve" style="enable-background:new 0 0 96 77;"
+				viewBox="0 0 96 77" height="77px" width="96px" y="0px" x="0px"
+				xmlns:xlink="http://www.w3.org/1999/xlink"
+				xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.0">
+			<path
+				d="M90.000,77.000 C90.000,77.000 6.000,77.000 6.000,77.000 C2.686,77.000 0.000,74.314 0.000,71.000 C0.000,71.000 0.000,6.000 0.000,6.000 C0.000,2.686 2.686,-0.000 6.000,-0.000 C6.000,-0.000 90.000,-0.000 90.000,-0.000 C93.314,-0.000 96.000,2.686 96.000,6.000 C96.000,6.000 96.000,71.000 96.000,71.000 C96.000,74.314 93.314,77.000 90.000,77.000 ZM32.000,4.000 C32.000,4.000 7.000,4.000 7.000,4.000 C5.343,4.000 4.000,5.343 4.000,7.000 C4.000,7.000 4.000,70.000 4.000,70.000 C4.000,71.657 5.343,73.000 7.000,73.000 C7.000,73.000 32.000,73.000 32.000,73.000 C32.000,73.000 32.000,4.000 32.000,4.000 ZM92.000,7.000 C92.000,5.343 90.657,4.000 89.000,4.000 C89.000,4.000 36.000,4.000 36.000,4.000 C36.000,4.000 36.000,73.000 36.000,73.000 C36.000,73.000 89.000,73.000 89.000,73.000 C90.657,73.000 92.000,71.657 92.000,70.000 C92.000,70.000 92.000,7.000 92.000,7.000 ZM24.000,19.000 C24.000,19.000 11.000,19.000 11.000,19.000 C11.000,19.000 11.000,13.000 11.000,13.000 C11.000,13.000 24.000,13.000 24.000,13.000 C24.000,13.000 24.000,19.000 24.000,19.000 ZM24.000,32.000 C24.000,32.000 11.000,32.000 11.000,32.000 C11.000,32.000 11.000,26.000 11.000,26.000 C11.000,26.000 24.000,26.000 24.000,26.000 C24.000,26.000 24.000,32.000 24.000,32.000 ZM24.000,45.000 C24.000,45.000 11.000,45.000 11.000,45.000 C11.000,45.000 11.000,39.000 11.000,39.000 C11.000,39.000 24.000,39.000 24.000,39.000 C24.000,39.000 24.000,45.000 24.000,45.000 Z"
+				fill-rule="evenodd" /> </svg>
+			Browse
+		</div>
+		<p>
+			<a title="Visual Search" href="/" sl-processed="1"> <img alt="" src="/media/public/images/Indic_Visual_Search.jpg" style="max-height:30px;">
+			</a>
+		</p>
+		<div class="search">
+			<form class="search-wrap" action="/search">
+				<svg xml:space="preserve" enable-background="new 0 0 50 50"
+					viewBox="0 0 50 50" height="50px" width="50px" y="0px" x="0px"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+				<circle r="16" cy="20" cx="21" stroke-miterlimit="10"
+					stroke-linecap="round" stroke-width="2" fill="none" /> <line
+					y2="45.5" x2="45.5" y1="32.229" x1="32.229" stroke-miterlimit="10"
+					stroke-width="4" fill="none" /> </svg>
+				<input type="text" placeholder="Search" autocomplete="off"
+					name="what">
+			</form>
+		</div>
+	</div>
+
+    <div id="book-cntr" class="owl-carousel">
+	</div>
+	<div class="img-selector"></div>  
+	<div id="slctdPageInfo"></div>
+	<div id="slctdPage"></div>
+	
+	<div id="annotaion_dialog-form" title="Add an Annotation">
+	</div>
+
+</div><!--end of center Container-->
+
+
+
+	<script type="text/javascript" src="/static/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.layout-latest.js"></script>
+	<script type="text/javascript" src="/static/js/owl.carousel.js"></script>
+	<script type="text/javascript" src="/static/js/core/homepage.js"></script>
+	<script type="text/javascript" src="/static/js/d3.v2.js"></script>
+	<script type="text/javascript" src="/static/js/d3.v3.min.js"></script>
+	<script type="text/javascript" src="/static/js/d3.tip.v0.6.3.js"></script>
+	<!-- <script src="http://jcrop-cdn.tapmodo.com/v2.0.0-RC1/js/Jcrop.js"></script> -->
+	
+	
+	<script type="text/javascript">
+
+		$(MstrMngr.registerMstrListEvents);
+		
+		var myLayout;
+		
+		$(document).ready(function () {
+		
+			myLayout = $('body').layout({
+				// enable showOverflow on west-pane so popups will overlap north pane
+				west__showOverflowOnHover:	true
+				, class: "ui-layout-center"
+			});
+		
+
+			MstrMngr.loadBooks();
+		});
+	
+	</script>
+
+</body>
+</html>
