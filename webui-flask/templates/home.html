@@ -151,12 +151,11 @@ function clickedimg(img)
 	var clicked=img.src;
 	json=clicked.split("/");
 	n=json.length;
-	n1=json[n-1];
-	ext="_coordinates.json";
-	inter=n1.split(".");
+	image=json[n-1];
+	ext="_segments.json";
+	inter=image.split(".");
 	numjson=inter[0]+ext;
-	textjsonpath ="http://localhost:5000/static/visual-search/annotations/"+inter[0]+"_texts.json";
-	var jsonfile_path1 = $.getJSON($SCRIPT_ROOT + '/booksegment',
+	var jsonfile_path1 = $.getJSON($SCRIPT_ROOT + '/segment', 
 		{ imagepath: clicked.toString()
 		} 
 		/*
@@ -166,7 +165,7 @@ function clickedimg(img)
 	        }
 		*/
 	 	);
-	var jsonfile_path2 = $.getJSON($SCRIPT_ROOT + '/editform', 
+/*	var jsonfile_path2 = $.getJSON($SCRIPT_ROOT + '/form_process', 
                 { pass2: textjsonpath.toString()
                 } 
                 /*
@@ -175,7 +174,7 @@ function clickedimg(img)
                     //var nvb = $("p").html({{ result }});
                 }
                 */
-                );
+             //   );*/
 
 	$("#prvw").empty();
 	var svg = d3.select(".pics")
@@ -197,7 +196,7 @@ function clickedimg(img)
 	console.log('hello');
 	console.log(numjson);
 
-	d3.json("http://localhost:5000/static/visual-search/segmented-books/"+numjson,
+	d3.json("/static/segments/"+numjson,
                 function(error,test) 
                 {
 			console.log(test.imagelocation);
@@ -208,7 +207,6 @@ function clickedimg(img)
 				.attr("xlink:href", test.imagelocation)
 				.attr("x", "0")
 				.attr("y", "0");
-
 			var img = new Image();
 			img.src=test.imagelocation;
 			img.onload=function(){
@@ -231,20 +229,11 @@ function clickedimg(img)
 				.attr('fill',function (d) { return "blue"; } )
 				.on('mouseover',tip.show)
 				.on('mouseout',tip.hide)
-		                .on("click",function goToURL(om) {
-					jsondata = [om.geometry.x,om.geometry.y,om.geometry.height,om.geometry.width];
+		                .on("click",function goToURL(c) {
+					jsondata = [c.geometry.x,c.geometry.y,c.geometry.height,c.geometry.width];
+                    alert(image);
  					alert(jsondata);
-					var nvb = $.getJSON($SCRIPT_ROOT + '/coords', 
-			                { pass3: jsondata.toString()
-                			} 
-                			/*
-               				function(data) {
-                   			$("#result").text(data.result);
-		                    	//var nvb = $("p").html({{ result }});
-                			}
-                			*/
-                			);
-			  		location.href="/edit/";
+			  		location.href="/form?coords="+jsondata+"&image="+image;
 				    });
 		}
 	);
@@ -287,8 +276,8 @@ Html contains
 				<!-- <div class="row">  -->
 					<div class="row-md-1">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-							<img src="{{ url_for('static', filename='visual-search/images/Kandanu1.jpg') }}" 
-							alt="BookList" onerror="this.src='{{ url_for('static', filename='vsual-ssearch//images/no-img.jpg')}}'"
+							<img src="{{ url_for('static', filename='images/upanishad1.jpg') }}" 
+							alt="BookList" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'"
 							width="115px" height="80px"><!-- width="185px" height="140px" -->
 						</a>
 					</div> 
@@ -303,7 +292,7 @@ Html contains
 	<div id="prvw">
 	<img id="prv" src="Dynamic"
 		 alt="Image Preview"
-		 onerror="this.src='{{url_for('static', filename='visual-search/images/no-pre.jpg')}}'" width="940">
+		 onerror="this.src='{{url_for('static', filename='images/no-pre.jpg')}}'" width="940">
 	</div>
 <!-- =========================================================================== -->
 <!-- thumbnail views Code -->
@@ -313,7 +302,7 @@ Html contains
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank" class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
 
-						<img onclick="clickedimg(this)" id="bkl1" src="{{ url_for('static', filename='visual-search/images/P1000395.jpg') }}" alt="No Images"
+						<img onclick="clickedimg(this)" id="bkl1" src="{{ url_for('static', filename='images/P1000395.jpg') }}" alt="No Images"
 
 							onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
 
@@ -323,7 +312,7 @@ Html contains
 			<div class="col"> 
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-						<img onclick="clickedimg(this)" id="bkl2" src="{{ url_for('static',  filename='visual-search/images/P1000396.jpg') }}"  alt="No Images"
+						<img onclick="clickedimg(this)" id="bkl2" src="{{ url_for('static',  filename='images/P1000396.jpg') }}"  alt="No Images"
 						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
 					</a>
 				</div>
@@ -331,7 +320,7 @@ Html contains
 			<div class="col"> 
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-						<img onclick="clickedimg(this)" id="bkl3" src="{{ url_for('static', filename='visual-search/images/P1000397.jpg') }}" alt="No Images"
+						<img onclick="clickedimg(this)" id="bkl3" src="{{ url_for('static', filename='images/P1000397.jpg') }}" alt="No Images"
 						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive" >
 					</a>
 				</div>
@@ -339,7 +328,7 @@ Html contains
 			<div class="col"> 
 				<div class="col-lg-2 col-sm-3 col-xs-4">
 					<a target="_blank"  class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
-						<img onclick="clickedimg(this)" id="bkl4" src="{{ url_for('static', filename='visual-search/images/Kandanu1.jpg') }}"') }}" 
+						<img onclick="clickedimg(this)" id="bkl4" src="{{ url_for('static', filename='images/upanishad1.jpg') }}"') }}" 
 						alt="No Images"
 						onerror="this.src='{{ url_for('static', filename='images/no-img.jpg')}}'" class="img-responsive">
 					</a>
