@@ -1,7 +1,0 @@
-{
-"imagepath": "../../visual-search/images/user-upload/durgachalisa_template.jpg,
-"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
-"Segments":[,
-    { "geometry": { "x":16 , "y":4, "height":36, "width":10 } }
-]
-}
