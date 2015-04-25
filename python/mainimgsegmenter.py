@@ -6,7 +6,7 @@ import json
 import cv
 import argparse
 import splitintolines_matformat
-#import splitintolines_updated
+
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-j", "--json", required = True,
@@ -24,7 +24,7 @@ with open( jsonfile ) as f :
      d = json.load( f )
 allimages = []
 allimages = d['book']['images']
-
+print allimages
 
 def SplitIntoWords(docImg,segbookfilename):
      #print "hello"

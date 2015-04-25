@@ -3,7 +3,7 @@
 # 
 # File path to input document image
 #document-image-path=Kandanu1.jpg
-document-image-path=o10.jpg
+document-image-path=o8.jpg
 #
 # Output granularity
 # (LINES,WORDS)

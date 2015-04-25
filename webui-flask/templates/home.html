@@ -151,9 +151,9 @@ function clickedimg(img)
 	var clicked=img.src;
 	json=clicked.split("/");
 	n=json.length;
-	n1=json[n-1];
+	image=json[n-1];
 	ext="_segments.json";
-	inter=n1.split(".");
+	inter=image.split(".");
 	numjson=inter[0]+ext;
 	var jsonfile_path1 = $.getJSON($SCRIPT_ROOT + '/segment', 
 		{ imagepath: clicked.toString()
@@ -207,7 +207,6 @@ function clickedimg(img)
 				.attr("xlink:href", test.imagelocation)
 				.attr("x", "0")
 				.attr("y", "0");
-
 			var img = new Image();
 			img.src=test.imagelocation;
 			img.onload=function(){
@@ -230,10 +229,11 @@ function clickedimg(img)
 				.attr('fill',function (d) { return "blue"; } )
 				.on('mouseover',tip.show)
 				.on('mouseout',tip.hide)
-		                .on("click",function goToURL(om) {
-					jsondata = [om.geometry.x,om.geometry.y,om.geometry.height,om.geometry.width];
+		                .on("click",function goToURL(c) {
+					jsondata = [c.geometry.x,c.geometry.y,c.geometry.height,c.geometry.width];
+                    alert(image);
  					alert(jsondata);
-			  		location.href="form.html";
+			  		location.href="/form?coords="+jsondata+"&image="+image;
 				    });
 		}
 	);
