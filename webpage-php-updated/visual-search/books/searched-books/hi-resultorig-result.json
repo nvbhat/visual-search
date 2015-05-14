@@ -1,0 +1,8 @@
+{
+"imagepath": "../../visual-search/images/user-upload/hi-resultorig.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":66 , "y":107, "height":121, "width":135 } },
+    { "geometry": { "x":299 , "y":109, "height":354, "width":137 } }
+]
+}

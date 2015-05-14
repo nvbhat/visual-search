@@ -1,0 +1,14 @@
+{
+"imagepath": "../../visual-search/images/user-upload/abhyas_filteredorig.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":120 , "y":34, "height":165, "width":70 } },
+    { "geometry": { "x":174 , "y":197, "height":219, "width":233 } },
+    { "geometry": { "x":912 , "y":219, "height":957, "width":255 } },
+    { "geometry": { "x":133 , "y":485, "height":178, "width":521 } },
+    { "geometry": { "x":1040 , "y":63, "height":1085, "width":99 } },
+    { "geometry": { "x":58 , "y":197, "height":103, "width":233 } },
+    { "geometry": { "x":363 , "y":198, "height":408, "width":234 } },
+    { "geometry": { "x":174 , "y":198, "height":219, "width":234 } }
+]
+}

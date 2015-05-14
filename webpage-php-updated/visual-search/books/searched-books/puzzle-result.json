@@ -1,0 +1,7 @@
+{
+"imagepath": "../../visual-search/images/user-upload/puzzle.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":100 , "y":571, "height":115, "width":611 } }
+]
+}

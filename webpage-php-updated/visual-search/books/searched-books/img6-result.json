@@ -1,0 +1,22 @@
+{
+"imagepath": "../../visual-search/images/user-upload/img6.png,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.png",
+"Segments":[,
+    { "geometry": { "x":11 , "y":0, "height":49, "width":13 } },
+    { "geometry": { "x":11 , "y":124, "height":49, "width":137 } },
+    { "geometry": { "x":9 , "y":460, "height":47, "width":473 } },
+    { "geometry": { "x":10 , "y":157, "height":48, "width":170 } },
+    { "geometry": { "x":232 , "y":35, "height":270, "width":48 } },
+    { "geometry": { "x":232 , "y":164, "height":270, "width":177 } },
+    { "geometry": { "x":10 , "y":315, "height":48, "width":328 } },
+    { "geometry": { "x":10 , "y":363, "height":48, "width":376 } },
+    { "geometry": { "x":231 , "y":258, "height":269, "width":271 } },
+    { "geometry": { "x":232 , "y":84, "height":270, "width":97 } },
+    { "geometry": { "x":231 , "y":164, "height":269, "width":177 } },
+    { "geometry": { "x":10 , "y":124, "height":48, "width":137 } },
+    { "geometry": { "x":12 , "y":0, "height":50, "width":13 } },
+    { "geometry": { "x":10 , "y":158, "height":48, "width":171 } },
+    { "geometry": { "x":10 , "y":0, "height":48, "width":13 } },
+    { "geometry": { "x":352 , "y":228, "height":390, "width":241 } }
+]
+}

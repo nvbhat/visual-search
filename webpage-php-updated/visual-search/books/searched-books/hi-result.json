@@ -1,0 +1,10 @@
+{
+"imagepath": "../../visual-search/images/user-upload/hi.png,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.png",
+"Segments":[,
+    { "geometry": { "x":65 , "y":103, "height":119, "width":133 } },
+    { "geometry": { "x":298 , "y":105, "height":352, "width":135 } },
+    { "geometry": { "x":65 , "y":102, "height":119, "width":132 } },
+    { "geometry": { "x":65 , "y":104, "height":119, "width":134 } }
+]
+}

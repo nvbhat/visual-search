@@ -219,7 +219,7 @@ def SplitLinesIntoWords(img):
         p2=(greyimg.cols,currLineBottom)
 
         m_lineImage = cv.GetSubRect(m_docImage,(0,currLineTop,m_docImage.cols,currLineBottom-currLineTop+1))
-        cv.SaveImage("lineImage.jpg",m_lineImage)
+        #cv.SaveImage("lineImage.jpg",m_lineImage)
 	wordBoundaries1 = []
 	wordBoundaries2 = []
 

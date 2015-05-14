@@ -1,0 +1,7 @@
+{
+"imagepath": "../../visual-search/images/user-upload/1_resultorig.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":1537 , "y":131, "height":1578, "width":168 } }
+]
+}

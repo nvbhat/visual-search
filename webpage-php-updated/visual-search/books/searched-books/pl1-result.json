@@ -1,0 +1,10 @@
+{
+"imagepath": "../../visual-search/images/user-upload/pl1.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":977 , "y":371, "height":1036, "width":418 } },
+    { "geometry": { "x":977 , "y":370, "height":1036, "width":417 } },
+    { "geometry": { "x":978 , "y":371, "height":1037, "width":418 } },
+    { "geometry": { "x":978 , "y":370, "height":1037, "width":417 } }
+]
+}

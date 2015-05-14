@@ -1,0 +1,10 @@
+{
+	"imagepath": "testimages/Kandanu1.jpg",
+	"segments": [
+		{ "geometry" : { "x":0, "y":0, "width": 100, "height": 50 },
+                  "color":"green", 
+    	 	  "text":"rama" },
+		{ "geometry" : { "x":50, "y":200, "width": 100, "height": 350 },
+                  "color":"blue", "text":"brahma"}
+	]
+}

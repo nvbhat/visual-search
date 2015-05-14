@@ -1,0 +1,11 @@
+{
+"imagepath": "../../visual-search/images/user-upload/pl8_resultorig.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":946 , "y":134, "height":991, "width":168 } },
+    { "geometry": { "x":947 , "y":134, "height":992, "width":168 } },
+    { "geometry": { "x":945 , "y":134, "height":990, "width":168 } },
+    { "geometry": { "x":946 , "y":135, "height":991, "width":169 } },
+    { "geometry": { "x":946 , "y":133, "height":991, "width":167 } }
+]
+}

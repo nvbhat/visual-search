@@ -1,0 +1,9 @@
+{
+"imagepath": "../../visual-search/images/user-upload/durga_resultorig.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":301 , "y":114, "height":365, "width":137 } },
+    { "geometry": { "x":308 , "y":313, "height":372, "width":336 } },
+    { "geometry": { "x":123 , "y":139, "height":187, "width":162 } }
+]
+}

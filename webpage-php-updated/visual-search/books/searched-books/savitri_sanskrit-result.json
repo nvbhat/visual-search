@@ -1,0 +1,18 @@
+{
+"imagepath": "../../visual-search/images/user-upload/savitri_sanskrit.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":192 , "y":329, "height":273, "width":379 } },
+    { "geometry": { "x":477 , "y":332, "height":558, "width":382 } },
+    { "geometry": { "x":33 , "y":395, "height":114, "width":445 } },
+    { "geometry": { "x":477 , "y":333, "height":558, "width":383 } },
+    { "geometry": { "x":194 , "y":329, "height":275, "width":379 } },
+    { "geometry": { "x":190 , "y":329, "height":271, "width":379 } },
+    { "geometry": { "x":479 , "y":332, "height":560, "width":382 } },
+    { "geometry": { "x":477 , "y":330, "height":558, "width":380 } },
+    { "geometry": { "x":437 , "y":396, "height":518, "width":446 } },
+    { "geometry": { "x":475 , "y":332, "height":556, "width":382 } },
+    { "geometry": { "x":32 , "y":394, "height":113, "width":444 } },
+    { "geometry": { "x":31 , "y":395, "height":112, "width":445 } }
+]
+}

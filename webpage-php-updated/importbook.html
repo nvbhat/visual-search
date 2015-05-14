@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1><div style="text-align:left;color:blue;font-size:30px;">Import a Scanned Book</div></h1>
+
+<div style="align:left;">
+
+
+<!--<button type="button" onclick="upload_book()">Upload an image</button>
+<button type="button" onclick="browse_uploadedbooks()">Browse uploaded images</button>-->
+
+<!--<p>
+Please specify an image file to upload...<br>
+<input type="text" name="textline" size="30">
+</p>-->
+<!--<input type="file" id="upload" >
+<button type="button" onclick="upload_book();return;">Upload an image</button><br><br>
+-->
+<form name="form" action="uploadimage.php" method="POST"
+enctype="multipart/form-data">
+<!--Image File: <input type="file" name="uploadBox">
+    <br><br>
+
+    <input type="button" value="upload" name="get" onClick='upload()'>-->
+
+    <label for="file">Image filename:</label>
+    <input type="file" style ="font-size:20px" name="uploaded_file" id="uploaded_file">
+    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /><br />
+    <input type="hidden" name="image_type" value="" /><br />
+    
+    <input style ="font-size:25px" type="submit" name="submit" value="upload">
+    <input type="hidden" name="MM_insert" value="form" />
+
+    <p name="uploaded_img"></p>
+
+    </form>
+
+ <br><br>
+<button style ="font-size:20px" type="button" onclick="browse_uploadedbooks()">Browse uploaded images...</button>
+
+</div>
+
+
+<script type="text/JScript">
+
+/*function upload(){
+//document.getElementById("upload").click();
+var  file = document.submit.uploadBox.value ;
+alert(file);
+}*/
+
+
+function browse_uploadedbooks() {
+   //document.getElementById("uploadedimages").click(); 
+
+window.open("browseimages.php",'_self',false);
+//var location = document:.location.href;
+
+
+}
+
+</script>
+
+</body>
+</html> 
+

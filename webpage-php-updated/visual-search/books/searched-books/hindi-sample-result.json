@@ -1,0 +1,12 @@
+{
+"imagepath": "../../visual-search/images/user-upload/hindi-sample.jpg,
+"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
+"Segments":[,
+    { "geometry": { "x":6 , "y":52, "height":26, "width":81 } },
+    { "geometry": { "x":127 , "y":53, "height":147, "width":82 } },
+    { "geometry": { "x":290 , "y":1, "height":310, "width":30 } },
+    { "geometry": { "x":5 , "y":52, "height":25, "width":81 } },
+    { "geometry": { "x":7 , "y":52, "height":27, "width":81 } },
+    { "geometry": { "x":127 , "y":54, "height":147, "width":83 } }
+]
+}
