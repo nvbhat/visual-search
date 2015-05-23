@@ -1,15 +1,25 @@
-ROOTDIR = "/home/vtbhat/vsearch_db"
+ROOTDIR = "/tmp/vizdoc"
 
-MONGODIR = ROOTDIR + "/mongodb"
+def mongodir():
+    return ROOTDIR + "/mongodb"
 
-CACHEDIR = ROOTDIR + "/cache"
+def cachedir():
+    return ROOTDIR + "/cache"
 
-USERSTORE = ROOTDIR + "/users"
-
-PUBSTORE = ROOTDIR + "/public"
+def userroot(user):
+    return ROOTDIR + "/users/" + user
 
 def userimgdir(user):
-    USERSTORE + "/" + user + "/images"
+    return userroot(user) + "/images"
 
 def userbooksdir(user):
-    USERSTORE + "/" + user + "/books"
+    return userroot(user) + "/books"
+
+def pubroot():
+    return ROOTDIR + "/public"
+
+def pubimgdir():
+    return pubroot() + "/images"
+
+def pubbooksdir():
+    return pubroot() + "/books"
