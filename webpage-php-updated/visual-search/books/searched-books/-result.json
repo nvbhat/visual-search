@@ -1,9 +1,0 @@
-{
-"imagepath": "../../visual-search/images/user-upload/durgachalisa_original.jpg,
-"template-imagepath": "../../visual-search/images/template-images/durgachalisa_template.jpg",
-"Segments":[,
-    { "geometry": { "x":308 , "y":118, "height":361, "width":131 } },
-    { "geometry": { "x":315 , "y":317, "height":368, "width":330 } },
-    { "geometry": { "x":129 , "y":143, "height":182, "width":156 } }
-]
-}

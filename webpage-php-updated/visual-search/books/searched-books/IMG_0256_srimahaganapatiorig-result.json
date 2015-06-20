@@ -1,9 +1,0 @@
-{
-"imagepath": "../../visual-search/images/user-upload/IMG_0256_srimahaganapatiorig.jpg,
-"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.jpg",
-"Segments":[,
-    { "geometry": { "x":497 , "y":1035, "height":557, "width":1105 } },
-    { "geometry": { "x":497 , "y":1036, "height":557, "width":1106 } },
-    { "geometry": { "x":497 , "y":1034, "height":557, "width":1104 } }
-]
-}

@@ -1,0 +1,306 @@
+@CHARSET "ISO-8859-1";
+
+#ajjavali {
+    background: none repeat scroll 0 0 #eeeeee;
+    bottom: 0;
+    color: white;
+    left: 0;
+    line-height: 1.4;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    transform: translate3d(0px, 0px, 0px);
+    transition: left 0.25s cubic-bezier(0.25, 0, 0.3, 1) 0s;
+    width: 200px;
+    z-index: 2;
+}
+ #ajjavali .scrollWrap {
+    height: 99%;
+    margin-right: -100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 100px;
+}
+
+
+#ajjavali li, #searchResults li {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0 0 0 24px;
+}
+#ajjavali li a, #searchResults li a {
+    border-bottom: 1px solid #2a424f;
+    color: #007acb;
+    display: block;
+    font-weight: 400;
+    overflow: hidden;
+    padding: 10px 8px 10px 0;
+    white-space: nowrap;
+}
+#ajjavali li a span, #searchResults li a span {
+    color: #007acb;
+}
+
+#ajjavali .profileImage {
+    margin: 32px auto 0;
+}
+#ajjavali h4 a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 40px;
+    margin: 24px;
+    text-decoration: none;
+    transition: color 0.15s ease-out 0s;
+}
+#ajjavali h4 a img {
+    border-radius: 20px;
+    display: inline-block;
+    height: 40px;
+    margin-right: 8px;
+    vertical-align: middle;
+    width: 40px;
+}
+#ajjavali h4 a .initials {
+    background-color: #2a424f;
+    border-radius: 20px;
+    color: #0b2736;
+    display: inline-block;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 40px;
+    margin-right: 8px;
+    text-align: center;
+    vertical-align: middle;
+    width: 40px;
+}
+#ajjavali .tabs {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+#ajjavali .tabs li {
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    line-height: 26px;
+    padding: 0;
+    text-align: center;
+    width: 50%;
+}
+#ajjavali .tabs li:first-child {
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px;
+}
+#ajjavali .tabs li:last-child {
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+}
+#ajjavali .tabs li:hover {
+    background-color: transparent;
+}
+#ajjavali .tabs li.is-active {
+    background-color: #fff;
+    color: #0b2736;
+}
+#ajjavali .tab-content {
+    display: none;
+}
+#ajjavali .tab-content.is-active {
+    display: block;
+}
+#ajjavali .tab-content ol {
+    margin: 0;
+}
+#ajjavali .tab-content.groups ol {
+    display: none;
+}
+#ajjavali .tab-content.groups.has-groups ol {
+    display: block;
+}
+#ajjavali .tab-content.groups.has-groups section.no-groups {
+    display: none;
+}
+#ajjavali .tab-content.groups.is-creating-group section.create-group {
+    display: block;
+}
+#ajjavali .tab-content.groups.is-creating-group .button.create-group {
+    display: none;
+}
+#ajjavali .tab-content.groups section.no-groups {
+    border-bottom: 1px solid #2a424f;
+    margin-left: 24px;
+    padding: 24px 24px 32px 0;
+    position: relative;
+}
+#ajjavali .tab-content.groups section.no-groups h4 {
+    color: #fff;
+    margin: 0;
+}
+#ajjavali .tab-content.groups section.no-groups h4 span:before {
+    float: left;
+    font-size: 24px;
+    line-height: 1.7;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+#ajjavali .tab-content.groups section.no-groups p {
+    color: #007acb;
+    font-weight: 400;
+    margin: 8px 0 0;
+}
+#ajjavali .tab-content.groups section.no-groups p a {
+    color: #fff;
+}
+#ajjavali .tab-content.groups section.no-groups p a:hover {
+    text-decoration: underline;
+}
+#ajjavali .tab-content.groups section.create-group {
+    display: none;
+    padding: 24px;
+    position: relative;
+}
+#ajjavali .tab-content.groups section.create-group .close {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 26px;
+    z-index: 10;
+}
+#ajjavali .tab-content.groups section.create-group .close:before {
+    color: #fff;
+    font-size: 10px;
+    line-height: 26px;
+    vertical-align: middle;
+}
+#ajjavali .tab-content.groups section.create-group input[type="text"] {
+    border-color: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 100%;
+}
+#ajjavali .tab-content.groups section.create-group input[type="submit"] {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+    margin-top: 12px;
+}
+#ajjavali .tab-content.groups .button.create-group {
+    background: none repeat scroll 0 0 transparent;
+    border-color: #fff;
+    color: #fff;
+    margin: 24px;
+}
+#ajjavali .login {
+    background: none repeat scroll 0 0 #ffffff;
+    border-radius: 3px;
+    color: #122b3b;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 28px;
+    margin: 30px 40px 0;
+    padding: 0 0 3px;
+    text-align: center;
+}
+#ajjavali ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+#ajjavali ol li.is-active a {
+    color: #fff;
+    font-weight: bold;
+}
+#ajjavali ol li a {
+    color: 007acb;
+}
+#ajjavali ol li a b {
+    font-weight: 300;
+}
+#ajjavali ol li a span {
+    float: right;
+    margin-right: 8px;
+}
+#ajjavali ol li:hover {
+    background-color: #2a424f;
+}
+#ajjavali ol li:hover a {
+    color: #fff;
+}
+#ajjavali .search {
+    margin-bottom: 19px;
+}
+#ajjavali .search input {
+    background: url("/assets/icons/search-nav.png") no-repeat scroll 8px center transparent;
+    border-bottom: 1px solid #6da0ff;
+    border-width: 0 0 1px;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 200;
+    height: 50px;
+    margin: 0;
+    outline: medium none;
+    padding: 0;
+    text-indent: 32px;
+    width: 199px;
+}
+#ajjavali .search input::-moz-placeholder {
+    color: #999;
+}
+#ajjavali .profileImage img {
+    border-radius: 1000px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    display: block;
+    height: 45px;
+    margin: 0 auto;
+    width: 45px;
+}
+#ajjavali .bottom {
+    padding: 0 0 0 12px;
+}
+#ajjavali .bottom a {
+    color: #000000;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 20px;
+    padding: 0 5px;
+}
+#ajjavali .bottom a a:hover {
+    color: #008ed3;
+}
+#ajjavali .intro {
+    color: #ffffff;
+    text-align: center;
+}
+#ajjavali .intro h3 {
+    font-size: 28px;
+    line-height: 60px;
+}
+#ajjavali .intro a {
+    color: #ffffff;
+}
+#ajjavali .intro p {
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 20px;
+    margin: 0 0 20px;
+}
+#ajjavali .intro p a {
+    font-weight: 500;
+}
+#ajjavali .intro .signup, #ajjavali .intro .login {
+    background: none repeat scroll 0 0 #ffffff;
+    border-radius: 3px;
+    color: #122b3b;
+    display: block;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 0 40px 10px;
+    padding: 0 0 4px;
+}

@@ -1,0 +1,15 @@
+
+{
+    "imagepath": "visual-search/test/",
+    "template-imagepath": "../examples/search-images/durgachalisa_template.jpg",
+    "segments":[
+
+	{     "geometry":{'x':308	'y':118	'width':361	'height':131} },
+	{     "geometry":{'x':129	'y':143	'width':182	'height':156} },
+	{     "geometry":{'x':130	'y':143	'width':183	'height':156} },
+	{     "geometry":{'x':315	'y':317	'width':368	'height':330} }
+]
+}
+
+]
+}
