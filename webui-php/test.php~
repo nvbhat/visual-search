@@ -1,0 +1,11 @@
+<?php
+session_start();
+ $srcimage=$_SESSION['srcimage'];
+ $book=$_SESSION['bookname'];
+   $filepath="test1.py";
+    
+ echo exec("python $filepath -j $book");
+ //$retval=exec("python ../../test1.py ");
+ //echo $retval;
+   
+?>

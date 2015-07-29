@@ -1,0 +1,61 @@
+
+{
+    "imagepath": "visual-search/fuzzysegmented-books/",
+    "template-imagepath": "croppedimage.jpg",
+    "segments":[
+
+	{     "geometry":{'x':394	'y':7	'width':417	'height':52} },
+	{     "geometry":{'x':395	'y':7	'width':418	'height':52} },
+	{     "geometry":{'x':103	'y':52	'width':126	'height':97} },
+	{     "geometry":{'x':263	'y':52	'width':286	'height':97} },
+	{     "geometry":{'x':264	'y':52	'width':287	'height':97} },
+	{     "geometry":{'x':453	'y':52	'width':476	'height':97} },
+	{     "geometry":{'x':244	'y':98	'width':267	'height':143} },
+	{     "geometry":{'x':672	'y':98	'width':695	'height':143} },
+	{     "geometry":{'x':386	'y':143	'width':409	'height':188} },
+	{     "geometry":{'x':626	'y':143	'width':649	'height':188} },
+	{     "geometry":{'x':240	'y':188	'width':263	'height':233} },
+	{     "geometry":{'x':499	'y':324	'width':522	'height':369} },
+	{     "geometry":{'x':457	'y':369	'width':480	'height':414} },
+	{     "geometry":{'x':755	'y':369	'width':778	'height':414} },
+	{     "geometry":{'x':756	'y':369	'width':779	'height':414} },
+	{     "geometry":{'x':232	'y':414	'width':255	'height':459} }
+]
+
+}
+
+{
+    "imagepath": "visual-search/fuzzysegmented-books/",
+    "template-imagepath": "croppedimage.jpg",
+    "segments":[
+
+]
+
+}
+
+{
+    "imagepath": "visual-search/fuzzysegmented-books/",
+    "template-imagepath": "croppedimage.jpg",
+    "segments":[
+
+]
+
+}
+
+{
+    "imagepath": "visual-search/fuzzysegmented-books/",
+    "template-imagepath": "croppedimage.jpg",
+    "segments":[
+
+]
+
+}
+
+{
+    "imagepath": "visual-search/fuzzysegmented-books/",
+    "template-imagepath": "croppedimage.jpg",
+    "segments":[
+
+]
+
+}

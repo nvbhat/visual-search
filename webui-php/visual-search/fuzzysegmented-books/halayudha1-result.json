@@ -1,0 +1,9 @@
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+]
+
+}

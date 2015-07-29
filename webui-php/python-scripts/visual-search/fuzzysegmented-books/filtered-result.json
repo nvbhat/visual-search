@@ -1,0 +1,29 @@
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+]
+
+}
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+	{     "geometry":{'x':109	'y':423	'width':178	'height':466} },
+	{     "geometry":{'x':1565	'y':1313	'width':1634	'height':1356} }
+]
+
+}
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+]
+
+}

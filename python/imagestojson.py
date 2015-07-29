@@ -10,9 +10,8 @@ import shutil
 
 #for i in range(1, len(sys.argv)):
     #print str(sys.argv[i])
-print "input the json file you want to save!!"
-jsonfile = raw_input ()
-
+#print "input the json file you want to save!!"
+#jsonfile = raw_input ()
 #writing data to json file manually ......
 print "writing data to json file..."
 
@@ -79,14 +78,21 @@ d={
 
 
 arr = []
-for i in range(1, len(sys.argv)):
+temp="";
+length=len(sys.argv);
+print length
+for i in range(1, len(sys.argv)-1):
     #print str(sys.argv[i])
     arr.append(str(sys.argv[i]))
-
+    if(length==4):
+      temp=sys.argv[i+1];
+      
+    
+print "temp=",temp
 d['book']['images']=arr
 json.dumps(d)
 
-with open('visual-search/indexedbooks/'+jsonfile, 'w') as outfile:
+with open('visual-search/indexedbooks/'+temp, 'w') as outfile:
      json.dump(d, outfile, sort_keys = True, indent = 2,ensure_ascii=False)
 print "Successfully saved!!!"  
 

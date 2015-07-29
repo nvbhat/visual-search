@@ -1,8 +1,0 @@
-{
-"imagepath": "../../visual-search/images/user-upload/googleocr.png,
-"template-imagepath": "../../visual-search/images/template-images/croppedimgtest3.png",
-"Segments":[,
-    { "geometry": { "x":399 , "y":0, "height":456, "width":19 } },
-    { "geometry": { "x":399 , "y":1, "height":456, "width":20 } }
-]
-}

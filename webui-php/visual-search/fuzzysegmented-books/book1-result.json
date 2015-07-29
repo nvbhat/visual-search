@@ -1,0 +1,63 @@
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+]
+
+}
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+]
+
+}
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+]
+
+}
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+	{     "geometry":{'x':198	'y':323	'width':265	'height':372} },
+	{     "geometry":{'x':199	'y':323	'width':266	'height':372} },
+	{     "geometry":{'x':198	'y':324	'width':265	'height':373} },
+	{     "geometry":{'x':199	'y':324	'width':266	'height':373} },
+	{     "geometry":{'x':200	'y':324	'width':267	'height':373} },
+	{     "geometry":{'x':199	'y':325	'width':266	'height':374} },
+	{     "geometry":{'x':200	'y':325	'width':267	'height':374} },
+	{     "geometry":{'x':483	'y':326	'width':550	'height':375} },
+	{     "geometry":{'x':484	'y':326	'width':551	'height':375} },
+	{     "geometry":{'x':485	'y':326	'width':552	'height':375} },
+	{     "geometry":{'x':483	'y':327	'width':550	'height':376} },
+	{     "geometry":{'x':484	'y':327	'width':551	'height':376} },
+	{     "geometry":{'x':485	'y':327	'width':552	'height':376} },
+	{     "geometry":{'x':39	'y':390	'width':106	'height':439} },
+	{     "geometry":{'x':40	'y':390	'width':107	'height':439} },
+	{     "geometry":{'x':39	'y':391	'width':106	'height':440} },
+	{     "geometry":{'x':40	'y':391	'width':107	'height':440} },
+	{     "geometry":{'x':444	'y':391	'width':511	'height':440} }
+]
+
+}
+
+{
+    "imagepath": "../../visual-search/fuzzysegmented-books/",
+    "template-imagepath": "../../visual-search/template-images/croppedimage.jpg",
+    "segments":[
+
+]
+
+}

@@ -1,0 +1,34 @@
+
+{
+    "imagepath": "visual-search/segmented-books/",
+    "segments":[
+
+	{     "geometry":{"x":174,"y":298,"height":6,"width":4}},
+	{     "geometry":{"x":60,"y":298,"height":8,"width":7}},
+	{     "geometry":{"x":285,"y":265,"height":6,"width":4}},
+	{     "geometry":{"x":264,"y":265,"height":8,"width":5}},
+	{     "geometry":{"x":220,"y":265,"height":6,"width":4}},
+	{     "geometry":{"x":109,"y":265,"height":9,"width":8}},
+	{     "geometry":{"x":234,"y":232,"height":8,"width":17}},
+	{     "geometry":{"x":229,"y":232,"height":6,"width":4}},
+	{     "geometry":{"x":314,"y":231,"height":8,"width":8}},
+	{     "geometry":{"x":334,"y":199,"height":8,"width":11}},
+	{     "geometry":{"x":329,"y":199,"height":6,"width":4}},
+	{     "geometry":{"x":276,"y":199,"height":9,"width":7}},
+	{     "geometry":{"x":80,"y":199,"height":8,"width":7}},
+	{     "geometry":{"x":311,"y":166,"height":6,"width":4}},
+	{     "geometry":{"x":171,"y":166,"height":8,"width":9}},
+	{     "geometry":{"x":75,"y":166,"height":9,"width":8}},
+	{     "geometry":{"x":283,"y":134,"height":6,"width":4}},
+	{     "geometry":{"x":55,"y":134,"height":6,"width":4}},
+	{     "geometry":{"x":251,"y":133,"height":7,"width":5}},
+	{     "geometry":{"x":299,"y":101,"height":8,"width":7}},
+	{     "geometry":{"x":145,"y":101,"height":6,"width":4}},
+	{     "geometry":{"x":109,"y":100,"height":9,"width":12}},
+	{     "geometry":{"x":155,"y":29,"height":8,"width":5}},
+	{     "geometry":{"x":141,"y":29,"height":9,"width":9}},
+	{     "geometry":{"x":68,"y":29,"height":8,"width":5}},
+	{     "geometry":{"x":90,"y":28,"height":7,"width":8}},
+	{     "geometry":{"x":104,"y":25,"height":13,"width":25}}
+]
+}

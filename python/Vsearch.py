@@ -2,11 +2,11 @@ import os, sys
 from array import array
 import cv2
 import numpy as np
-import json
+import json 
 import argparse
 import shutil
 import searchalgo
-#usage:-> python imgsearchfinal.py "Templateimage" "book.json" "Threshold" "Algorithm for search" 
+#usage:-> python Vsearch.py "Templateimage" "book.json" "Threshold" "Algorithm for search" 
 
 def vsearch(tempimg,book,threshval,algo):
     print tempimg

@@ -22,7 +22,7 @@ jsonfile = args["json"]
 tempimg = args["tempimg"]
 segbookfilename = args['book']
 fuzzysegbookdir = "visual-search/fuzzysegmented-books/"
-
+searchedimages="visual-search/searched-images/"
 #f= open(fuzzysegbookdir+segbookfilename,'w')
 
 with open( jsonfile ) as f :
@@ -59,16 +59,25 @@ for i in range(len(allimages)):
 
     for pt in zip( *loc[::-1] ):
 	cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0,0,255), 2)
+       
 	if(nMatches != 0):
 	    f.write(",")
 	str5="\n\t{"+"     \"geometry\":"+"{"+"\'x\':" +str(pt[0])+"\t"+"\'y\':"+str(pt[1])+"\t"+"\'width\':"+str(pt[0]+w)+"\t"+"\'height\':"+str(pt[1]+h)+"}"+" }"  
 	f.write(str5)
         nMatches = nMatches+1
+        #for i in range(10):
+            #cv2.imwrite(str(i)+'.png',img_rgb)
+    str6="\n]\n}\n"
+    f.write(str6)
+    str6="\n]\n}\n"
+    f.write(str6)
+    #f.close()
+   
+    #for i in range(10):
+    cv2.imwrite(str(i)+'.png',img_rgb)
+
+
+        
+    #f.close() 
+    cv2.waitKey(3000) 
     
-    str6="\n]\n}\n"
-    f.write(str6)
-    str6="\n]\n}\n"
-    f.write(str6)
-    f.close()
-    cv2.imshow('result',img_rgb)
-    cv2.waitKey(3000)  
