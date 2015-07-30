@@ -20,15 +20,23 @@ ap.add_argument("-b", "--book", required = True,
 ap.add_argument("-t", "--thresh", required = True,
 				help = "threshold value")
 
+ap.add_argument("-d", "--dir", required = True,
+		help = "temporary directory")
+
+
 
 args = vars(ap.parse_args())
 jsonfile = args["json"]
 tempimg = args["tempimg"]
+#print tempimg
 segbookfilename = args['book']
 threshold1=args['thresh']
-
+root_dir= args['dir']
 #print tempimg
-bookdir="../../maindirectory/"
+bookdir=root_dir+"/maindirectory/"
+resultimg_rootdir = root_dir+r"/tmp/searched-images/Template-Match/"
+fuzzysegbookdir = root_dir+"/tmp/fuzzysegmented-books/"
+imagedir=root_dir+"/example-images/user_uploads/"
 #print bookdir+jsonfile
 
 basejsonfilename = os.path.basename( jsonfile)
@@ -37,15 +45,15 @@ resultimages_dirname=splitbasejsonfname[0]
 
 #code for creating folders to save result searched-images dynamically
 #if folder is already exist it will override the contents inside the same folder.
-storeresultimg_dir = r"../../visual-search/searched-images/Template-Match/"+resultimages_dirname
+storeresultimg_dir = resultimg_rootdir+resultimages_dirname
 if not os.path.exists(storeresultimg_dir): 
    os.makedirs(storeresultimg_dir)
 else:
     shutil.rmtree(storeresultimg_dir) #removes all the subdirectories!
     os.makedirs(storeresultimg_dir)
 
-fuzzysegbookdir = "../../visual-search/fuzzysegmented-books/"
-imagedir="../../example-images/";
+
+
 
 
 with open( str(bookdir+jsonfile) ) as f :
@@ -85,12 +93,13 @@ for i in range(len(allimages)):
     w, h = templateimg.shape[::-1]
     res = cv2.matchTemplate( img_bin,  tempimg_bin, cv2.TM_CCOEFF_NORMED ) """
     #print resultimage;
+    #print imagedir+allimages[i]
     img_rgb = cv2.imread( imagedir+allimages[i])
     img_gray = cv2.cvtColor( img_rgb, cv2.COLOR_BGR2GRAY )
     templateimg=cv2.imread(tempimg,0)
     w, h = templateimg.shape[::-1]
     res = cv2.matchTemplate( img_gray, templateimg, cv2.TM_CCOEFF_NORMED )
-    print threshold1
+    #print threshold1
     threshold = float(threshold1)
    
     loc = np.where( res >= threshold )

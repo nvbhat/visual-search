@@ -78,22 +78,28 @@ d={
 
 
 arr = []
-temp="";
+temp=""
+abs_path = ""
+
 length=len(sys.argv);
 #print length
-for i in range(1, len(sys.argv)-1):
+for i in range(1, len(sys.argv)-2):
     #print str(sys.argv[i])
     arr.append(str(sys.argv[i]))
     #if(length==4):
     temp=sys.argv[i+1];
-      
-    
+    abs_path = sys.argv[i+2]  
+
+jsonfile_dir = abs_path+"/maindirectory/" 
+#print jsonfile_dir
+imgupload_dir = abs_path + "/example-images/user_uploads/"   
 #print "temp=",temp
 d['book']['images']=arr
 json.dumps(d)
-print d['book']['images'];
+#print d['book']['images'];
 
-with open('maindirectory/'+temp, 'w') as outfile:
+
+with open(jsonfile_dir+temp, 'w') as outfile:
      json.dump(d, outfile, sort_keys = True, indent = 2,ensure_ascii=False)
      #print d;
      outfile.close()
@@ -103,5 +109,5 @@ with open('maindirectory/'+temp, 'w') as outfile:
 #print arr
 for i in arr:
     #print i
-    shutil.copy(i, 'example-images/user_uploads/')
+    shutil.copy(i, imgupload_dir)
 #print "images successfully copied"

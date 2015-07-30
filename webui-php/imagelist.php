@@ -1,8 +1,11 @@
 <?php
 
+include('config.php');
+$root_dir=$_SERVER['DOCUMENT_ROOT'].$data;
+  
 $book = $_POST["book"]; 
 
-$dir="maindirectory/";//contains the json files
+$dir=$root_dir."/maindirectory/";//contains the json files
 $bookpath=$dir.$book;//path to selected "json file" from the lists
 
 $str_data=file_get_contents($bookpath);//read the .json format from the selected json file

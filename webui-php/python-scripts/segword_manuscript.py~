@@ -13,15 +13,20 @@ ap.add_argument("-i", "--image", required = True,
 ap.add_argument("-b", "--book", required = True,
 		help = "give a json file name to store the segmented result(ex:->filename.json)")
 
+ap.add_argument("-d", "--dir", required = True,
+		help = "temporary directory")
+
 
 args = vars(ap.parse_args())
 imagefile = args["image"]
 segbookfilename = args['book']
+root_dir= args['dir']
+image=root_dir+"/example-images/user_uploads/"+imagefile
+bookdir_segresult=root_dir+"/tmp/segmented-books/"
+resultimgdir= root_dir+"/tmp/segmented-images/"
+#imagename=os.path.basename( imagefile)
 
-bookdir_segresult="visual-search/segmented-books/"
-
-imagename=os.path.basename( imagefile)
-splitimagename=imagename.split(".")
+splitimagename=imagefile.split(".")
 resultimagename=splitimagename[0]+"-result.jpg"
 
 kernel1 = np.ones((2,2),np.uint8)
@@ -30,8 +35,8 @@ kernel2 = np.ones((1,1),np.uint8)
 all_heights = [] 
 
 
-img = cv2.imread(imagefile,0)
-resultimage = cv2.imread(imagefile)
+img = cv2.imread(image,0)
+resultimage = cv2.imread(image)
 
 #cv2.imshow('Output0',img)
 words_temp = np.zeros(img.shape[:2],np.uint8)
@@ -115,7 +120,7 @@ f.close()
 
 #cv2.imshow('img',resultimage)
 #cv2.imshow('img',img)
-cv2.imwrite("visual-search/segmented-images/"+resultimagename,resultimage)
+cv2.imwrite(resultimgdir+resultimagename,resultimage)
 print bookdir_segresult+segbookfilename
 cv2.waitKey(0)
 cv2.destroyAllWindows()

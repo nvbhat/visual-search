@@ -139,11 +139,12 @@ background : cyan;
 <body>  
 <?php
 include('config.php');
+$root_dir=$_SERVER['DOCUMENT_ROOT'].$data;
 ?>
 <script>
 
-  var root_dir ="<?php echo $data; ?>";
-  var img_dir=root_dir+"/example-images/user_uploads/";
+  var relpath_dir ="<?php echo $data; ?>";
+  var img_dir=relpath_dir+"/example-images/user_uploads/";
 </script>
  
 <div id="entire">
@@ -170,7 +171,8 @@ include('config.php');
 			</ul>
 			-->
 			<?php
-		$folder = 'maindirectory/';		
+                
+		$folder = $root_dir.'/maindirectory/';		
 	$filetype = '*.'.'json';
 	$files = glob($folder.$filetype);
 	if($files){ 
@@ -485,11 +487,11 @@ var iImg =new Array();
          var source1=document.getElementById("mainimg").src;
           
                      
-                       var dir=dir_temp+"example-images/user_uploads/";
+                       var dir=img_dir;
                        var fname= source.split("/").slice(0, -1).join("/")+"/";    
                        var splitfname = source.split(fname);
                        var imagefile = splitfname[1];
-                       var source1=dir+imagefile;
+                       var source1=imagefile;
                        var splitimagefile = imagefile.split(".");
                        var imagename=splitimagefile[0];
                        //alert(imagename); 
@@ -509,9 +511,9 @@ var iImg =new Array();
 
 
                                       //start d3.js
-        //alert(resultbook);
-           
-                   var svg = d3.select("#navr")
+            alert(resultbook);
+                     d3_img_source=img_dir+imagefile;
+                     var svg = d3.select("#navr")
                         .select("#aaa")
 			//.select(".easyzoom easyzoom--overlay easyzoom--with-thumbnails")
                         
@@ -544,11 +546,11 @@ var iImg =new Array();
 				.enter()
 				.append("svg:image")
 				.attr('image-rendering','optimizeQuality')
-				.attr("xlink:href", source)
+				.attr("xlink:href", d3_img_source)
 				.attr("x", "0")
 				.attr("y", "0");
 			var img = new Image();
-			img.src=source;
+			img.src=d3_img_source;
 			img.onload=function(){
 					var width=this.width;
 					var height=this.height;
@@ -612,71 +614,16 @@ var iImg =new Array();
         function visualsearch(form)
          {
 
- var book= document.getElementById('whichjson').innerHTML;
+                 var book= document.getElementById('whichjson').innerHTML;
                  var image=document.getElementById("mainimg").src;
-
-document.getElementById("tag3").href = "crop/demos/search.php?image_to_search=" + image + "&bookname=" + book;
-document.getElementById("tag4").href = "crop/demos/searchui_flann.php?image_to_search=" + image + "&bookname=" + book;
+               
+               document.getElementById("tag3").href = "crop/demos/search.php?image_to_search=" + image + "&bookname=" + book;
+               document.getElementById("tag4").href = "crop/demos/searchui_flann.php?image_to_search=" + image + "&bookname=" + book;
                       
-           /*if(document.getElementById('tempmatch').checked)
-              {
-                 
-                alert("template search");
-                var book= document.getElementById('whichjson').innerHTML;
-                 //alert(book);
-                 
-                 var image=document.getElementById("mainimg").src;
-                 window.location.href = "crop/demos/search.php?image_to_search=" + image + "&bookname=" + book+ "target='_blank'"; 
-              // window.location.href = "crop/demos/search.php";
-            
-
-      // $.post("test.php", {input: "register"}, function(data){
-                 
-              //alert(data);
-              
-//});
-
-                       
-              }//temp-match ends
-y
-             else if(document.getElementById('flannmatch').checked)
-              {
-                 
-                alert("flann search");
-              }
- 
-              else
-              {
-                  alert("please a option for visual search"); 
-              }
-
-
-*/
-           // document.getElementById('flannmatch').checked=false;
-          
+           
          }
      
-         // code for template-search starts
-    
-         /*function template_search(args)
-         {
-           alert("template search");
-           var source1=document.getElementById("mainimg").src;
-           
-           
-          
-          }//template-search function ends
-
-        
-         // code for flann-search starts
-         function flann_search(args)
-         {
-           alert("flann search");
-           var source1=document.getElementById("mainimg").src;
-           
-          }*///flann-search function ends
-
-
+         
      
 		</script>
 
