@@ -197,7 +197,7 @@ $root_dir=$_SERVER['DOCUMENT_ROOT'].$data;
 		<div id="example">
 			<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
 				<a href = "#" id="atag">
-					<img src="images/first.png" id="mainimg"  alt="" width="542" height="346" />
+					<img src="images/imgs/first.png" id="mainimg"  alt="" width="542" height="346" />
 				</a>
 			</div>
                          <center><span id = "demo"  name="imgname"> Current Image:</span></center> 

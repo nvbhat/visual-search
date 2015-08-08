@@ -61,7 +61,7 @@ height : 550px;
 //echo $path;
         include('../../config.php');
   $root_dir=$_SERVER['DOCUMENT_ROOT'].$data;
-  $savedircropimg=$root_dir."/tmp/template-images/"; 
+  $savedircropimg=$root_dir.$tmpimg_dir;
        //echo $savedircropimg;
        $set_threshold = $_POST["threshold"];
         //echo $set_threshold; 
@@ -96,7 +96,7 @@ height : 550px;
           $jsonresultfile=$splitbookname[0]."-result.json";
           $searched_images_dir=$splitbookname[0];
           
-           $tempimgjpg = $root_dir."/tmp/template-images/croppedimage.jpg";
+           $tempimgjpg = $root_dir.$tmpimg_dir."croppedimage.jpg";
          
               if($set_threshold=='')
             {
@@ -135,7 +135,7 @@ height : 550px;
           $splitbookname=split(".json",$book);
           $jsonresultfile=$splitbookname[0]."-result.json";
           $searched_images_dir=$splitbookname[0];
-          $tempimgpng = $root_dir."/tmp/template-images/croppedimage.png";
+          $tempimgpng = $root_dir.$tmpimg_dir."croppedimage.png";
                   
          //echo exec("python fuzzyimgsearch.py -j ../../maindirectory/$book -i $tempimg -b $jsonresultfile");
             if($set_threshold == '')
@@ -159,7 +159,7 @@ height : 550px;
 
    <?php
        /************code for display of searched result images***********/
-       $folder = $root_dir."/tmp/searched-images/Template-Match/".$searched_images_dir."/";   
+       $folder = $root_dir.$tempmatchresult_imgdir.$searched_images_dir."/";   
         $rel_folderpath=str_replace($_SERVER['DOCUMENT_ROOT'],"",$folder);
         // echo $rel_folderpath;
        $filetype = '*.'.'jpg';

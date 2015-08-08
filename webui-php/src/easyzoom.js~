@@ -91,7 +91,7 @@
 
         dw = this.$zoom.width() - w2;
         dh = this.$zoom.height() - h2;
-         
+         alert(dw);
         rw = dw / w1;
         rh = dh / h1;
 
