@@ -34,7 +34,7 @@ def getanno():
         {'file': impath, 'coord': coord})
     return anno 
 #        {'ratings': request.get('ratings'), 'name': request.get('name'), 
-#                    'text': request.get('text'), 'comment': request.get('comment')},
+#                    'text': request.get('text'), 'comment': request.getdb.dropDatabase()('comment')},
 #        safe=True, upsert=True)
 
 """      

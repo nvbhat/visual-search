@@ -19,7 +19,10 @@
 
 </script>
 <?php 
-//$image= $_GET['image'];
+//include('mongo.php');
+$coord= $_GET['coords'];
+$image= $_GET['image'];
+
 ?>
 
 <!--<div>
@@ -27,11 +30,13 @@
 </div>-->
 
 <script type="text/javascript">
- var str = window.location.search;
+ /*var str = window.location.search;
+ 
     var res = str.split("=");
 var symboled = res[1].split("&");
 var coord = symboled[0];
 image=res[2];
+*/
 </script>
 <body>
 
@@ -39,8 +44,9 @@ image=res[2];
 <h3> Share your knowledge</h3>
 </div>
 <div class="container col-md-8">
-      <form action="{{url_for('save_page', image=image,coords=coords)}}" method="POST" class="myfirstform aux | grep apache2 | less role="form">
-	  
+      <!--<form action="{{url_for('save_page', image=image,coords=coords)}}" method="POST" class="myfirstform aux | grep apache2 | less role="form">-->
+	  <form action="mongo.php" method = "POST">
+                   
 		<legend>Contact Form</legend>		
 
             <div class="form-group ">
@@ -48,7 +54,7 @@ image=res[2];
                         <div class="controls">
                  <div class="input-group">
 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                        <select name="ratings" class="form-control selectpicker  show-tick" > <option>1</option>
+                        <select name="rating" class="form-control selectpicker  show-tick" > <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
@@ -64,7 +70,7 @@ image=res[2];
 			<div class="controls">
 			    <div class="input-group">
 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>	
-	<input type="text" class="form-control" name="name" placeholder="Your Name:">
+	<input type="text" class="form-control" name="uname" placeholder="Your Name:">
 				</div>
 			</div>
 		</div>
@@ -74,7 +80,7 @@ image=res[2];
                         <div class="controls">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="text" class="form-control" id="text" name="text" placeholder="annotation">
+                                        <input type="text" class="form-control" id="text" name="description" placeholder="annotation">
                                 </div>
                         </div>  
                 </div>
@@ -84,7 +90,7 @@ image=res[2];
 			<div class="controls">
 			    <div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-					<input type="text" class="form-control" id="com" name="com" placeholder="Any comments?">
+					<input type="text" class="form-control" id="com" name="comments" placeholder="Any comments?">
 				</div>
 			</div>	
 		</div>
@@ -100,6 +106,11 @@ image=res[2];
                         </div>
                 </div>
 -->		
+                           <?php session_start();
+                    $_SESSION['image'] =$image;
+                    $_SESSION['coord'] = $coord;
+                    
+                     ?>
 
 	      <div class="controls" style="margin-left: 40%;">
 		   <input type="submit" name="submit" value="Save"/>

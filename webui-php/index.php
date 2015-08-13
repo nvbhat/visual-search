@@ -138,7 +138,11 @@ background : cyan;
 
 <body>  
 <?php
+session_start();
 include('config.php');
+//include('mongo.php');
+//$mongodata = $_SESSION['varname'];
+
 $root_dir=$_SERVER['DOCUMENT_ROOT'].$data;
 ?>
 <script>
@@ -406,10 +410,10 @@ var iImg =new Array();
 		  .offset([-10, 0])
 		  .html(function(d) {
 	    return "<strong>name:</strong> <span style='color:red'>" + d.text + "</span>";});
-	svg.call(tip);
-     //alert("sucess");
+	    svg.call(tip);
+             //alert("sucess");
        
-     d3.json(resultbook,
+               d3.json(resultbook,
                 function(error,test) 
                 {
                       //alert("inside");
@@ -528,13 +532,32 @@ var iImg =new Array();
 		        .style("border", "1px solid black")
                         .append('svg:g')
 		        .call(d3.behavior.zoom().on("zoom", redraw));
-	               
+	    var data = "";     
             var tip = d3.tip()
 		  .attr('class', 'd3-tip')
 		  .offset([-10, 0])
 		  .html(function(d) {
-	    return "<strong>name:</strong> <span style='color:red'>" + d.text + "</span>";});
-	svg.call(tip);
+                   var text = "meaning of the text is ...........";
+                   var jsondata= [d.geometry.x,d.geometry.y,d.geometry.height,d.geometry.width];
+                   jsondata_string= jsondata.toString(); 
+                                       
+                                       var request = $.ajax({
+                                       url: "mongodata.php",
+                                       type: "POST",
+                                       data: {image:d3_img_source,coord:jsondata_string},
+                                       dataType: "html"
+                                        });//ajax request method ends
+                                     request.done(function(info) {
+                                           data = info;
+                                         });
+                                       request.fail(function(jqXHR, textStatus) {
+                                   alert( "Request failed: " + textStatus );
+                                   });
+              
+                   //var data = "<?php echo $mongodata; ?>";
+                  //jsondata = [d.geometry.x,d.geometry.y,d.geometry.height,d.geometry.width];
+	     return "<strong>Description:</strong> <span style='color:red'>" + data+ "</span>";});
+	    svg.call(tip);
      //alert("sucess");
        
      d3.json(resultbook,
@@ -576,18 +599,22 @@ var iImg =new Array();
 				.attr("width", function (d) { return d.geometry.width; } )
 				.style("fill-opacity",0.2)
 				.attr('fill',function (d) { return "blue"; } )
-				//.on('mouseover',tip.show)
+                                
+				.on('mouseover',tip.show)
 				.on('mouseout',tip.hide)
 		                .on("click",function goToURL(c) {
-                                            
+                                        
 					jsondata = [c.geometry.x,c.geometry.y,c.geometry.height,c.geometry.width];
-                                        //alert(image);
- 					//alert(jsondata);
-			  		location.href="form.php?coords="+jsondata+"&image="+d3_img_source;
+                                        //alert(jsondata);
+		    	  		location.href="form.php?coords="+jsondata+"&image="+d3_img_source;
+                                                              
 				    })
-                                 .on('mouseover', function(d){
+                                 /*.on('mouseover', function(c){
                                          //alert("hello");
-                                        });
+
+                                        jsondata = [c.geometry.x,c.geometry.y,c.geometry.height,c.geometry.width];
+                                        
+                                        });*/
                               
                               
 		                }
