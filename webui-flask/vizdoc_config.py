@@ -23,3 +23,11 @@ def pubimgdir():
 
 def pubbooksdir():
     return pubroot() + "/books"
+
+def workdir():
+    return ROOTDIR
+
+def setworkdir(arg):
+    global WORKDIR
+    print "Setting root working directory to " + arg
+    WORKDIR = arg

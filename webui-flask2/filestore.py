@@ -5,7 +5,7 @@ from functools import wraps
 import json,time
 from werkzeug import secure_filename
 #import datetime
-from vizdoc_config import *
+from config import *
 
 store_api = Blueprint('store_api', __name__)
 
@@ -15,26 +15,15 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-#@store_api.route('/upload', methods=['GET', 'POST'])
-#def upload_file():
-##    if request.method == 'POST':
-  #      file = request.files.getlist('file[]')
-   #     if file and allowed_file(file.filename):
-    #        filename = secure_filename(file.filename)
-     #       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-      #      return redirect(url_for('uploaded_file',
-       #                             filename=filename))
-#    return render_template('upload.html') 
-
-@store_api.route('/getbooklist')
+@store_api.route('/books')
 def filelist():
     arr=[]
-    for root, dirs, files in os.walk(ROOTDIR):
+    for root, dirs, files in os.walk(pubbooksdir()):
     #print('Found directory: %s' % root)
-        for file in files:
-            if file.endswith(".json"):
-                 abspath = os.path.join(root,file) 
-                 newfile = str.replace(abspath, ROOTDIR+"/", "");
+        for f in files:
+            if f.endswith(".json"):
+                 abspath = os.path.join(root, f) 
+                 newfile = str.replace(abspath, workdir()+"/", "");
                  print (newfile)
                  sendpath=newfile
                  data=sendpath[1]

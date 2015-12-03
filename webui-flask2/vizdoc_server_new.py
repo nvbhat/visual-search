@@ -50,25 +50,45 @@ def home():
     return render_template('home.html')
 
 def main(argv):
+    if len(argv) < 1:
+        usage()
     try:
-        opts, args = getopt.getopt(argv, "r:ha:", ["rootdir=", "addr="])
+        opts, args = getopt.getopt(argv,"o:p:rh",["workdir="])
     except getopt.GetoptError:
         usage()
 
+    reset = False
+    myport = PORTNUM
     for opt, arg in opts:
         if opt == '-h':
             usage()
-        elif opt in ("-r", "--rootdir"):
+        elif opt in ("-o", "--workdir"):
             setworkdir(arg)
-        elif opt in ("-a", "--addr"):
-            outputfile = arg
+        elif opt in ("-p", "--port"):
+            myport = int(arg)
+        elif opt in ("-r", "--reset"):
+            reset = True
 
-    print "Using VIZDOC store at " + workdir()
+    print cmdname + ": Using " + workdir() + " as working directory."
+    
+    initworkdir(reset)
+    for a in args:
+        components = a.split(':')
+        if len(components) > 1:
+            print "Importing " + components[0] + " as " + components[1]
+            addrepo(components[0], components[1])
+        else: 
+            print "Importing " + components[0]
+            addrepo(components[0], "")
+    
+    os.chdir(workdir())
 
-    initstore()
-    import doctest
-    doctest.testmod()
-    app.run(host = '0.0.0.0',debug=True, use_reloader=False)  
+    app.run(
+      host ="0.0.0.0",
+      port = myport,
+      debug = True,
+      use_reloader=False
+     )
 
 if __name__ == "__main__":
    main(sys.argv[1:])

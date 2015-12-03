@@ -1,0 +1,132 @@
+{% extends "templates.html" %}
+{% block content %}
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <script src="/scripts/jquery.min.js"></script>
+   <script src="/bootstrap/js/bootstrap.min.js"></script>
+   <style type="text/css">
+#header {
+    background-color:gray;
+    color:white;
+    text-align:center;
+    padding:5px;
+}    
+.imgs{
+    	margin: 5px;
+    padding: 5px;
+    border: 1px solid #0000ff;
+    height: auto;
+    width: auto;
+    float: left;
+    text-align: center;
+	opacity: 0.8;
+	filter: alpha(opacity=80); /* For IE8 and earlier */
+    }
+div.imgs imgs {
+    display: inline;
+    margin: 5px;
+    border: 1px solid #ffffff;
+}
+   .desc {
+	text-align: center;
+	font-weight: normal;
+	width: 120px;
+	margin: 5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;	      
+}
+#section1 {
+    width:350px;
+    float:left;
+    padding:10px;	 	 
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;	 	 
+}
+#thumbnail {
+    height:180px;
+    width:180px;
+    float:left;
+    padding:5px;	      
+}
+</style>
+ <div class="jumbo">
+  <h2>Home<br>Welcome to Visual search tool !!!</h2>
+  <br/>
+  <!--<p>Click <a href="/welcome">here </a> to go to the welcome page</p>-->
+ <div id="nav">
+</div>
+
+	<div id="section">
+	<h2>Script preview</h2>
+	<iframe width="420" height="345"
+		src="{{ url_for('static', filename='images/no-pre.jpg') }}">
+	</iframe>
+	</div>
+
+<div id="footer">
+Thumbnail of the scripture selected from booklets.
+	    <div class="imgs"> 
+		<div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail"> <!-- href="klematis_big.htm"> is used for DB stored file-->
+                    <img src="{{ url_for('static', filename='images/125x125.jpg') }}" alt="{{ url_for('static', filename='images/no-img.jpg') }}">
+                </a>
+ 	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+ 	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+ 	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+ 	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+	    </div>
+	    <div class="col-md-1">
+                <a target="_blank" href="#" class="thumbnail">
+                    <img src="../images/125x125.jpg" alt="125x125" onerror="this.src='{{ url_for('static', filename='images/no-img.jpg') }} '" width="110" height="90">
+                </a>
+            </div>	</div><!-- End of thumbnail-->
+  </div>
+  </div>
+{% endblock %}
+

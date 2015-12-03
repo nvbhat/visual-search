@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1><div style="text-align:left;color:blue;font-size:30px;">Import a Scanned Book</div></h1>
+
+<div style="align:left;">
+
+
+<form name="form" action="uploadimage.php" method="POST"
+enctype="multipart/form-data">
+
+    <label for="file">Image filename:</label>
+    <input type="file" style ="font-size:20px" name="uploaded_file" id="uploaded_file">
+    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /><br />
+    <input type="hidden" name="image_type" value="" /><br />
+    
+    <input style ="font-size:25px" type="submit" name="submit" value="upload">
+    <input type="hidden" name="MM_insert" value="form" />
+
+    <p name="uploaded_img"></p>
+
+    </form>
+
+</div>
+
+</body>
+</html> 
+
