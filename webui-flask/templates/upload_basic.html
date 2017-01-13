@@ -1,0 +1,11 @@
+{% extends "templates.html" %}
+{% block content %}
+    <title>Upload new Book</title>
+    <h1>Upload A New Book</h1>
+    <form action="" method=post enctype=multipart/form-data>
+      <p> Name the new book
+	<input type="text" name="foldername" />
+	<input type="file"  name="file[]" multiple />
+         <input type=submit value=Upload /></p>
+    </form>
+{% endblock %}

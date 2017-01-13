@@ -1,3 +1,4 @@
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -47,21 +48,13 @@
         <script type="text/javascript">
 
             var svg = d3.select("body")
-
                 .append("svg")
-
-                .attr("width","100%")
-
-                .attr("height","100%")
-
+                .attr("width","900")
+               .attr("height","600")
                 .style("border", "1px solid black")
-
- .append('svg:g')
-
     .call(d3.behavior.zoom().on("zoom", redraw))
-
   .append('svg:g');
-//.attr("preserveAspectRatio","none") ;
+//.attr("preserveAspectRatio","xMin") ;
 
 
 
@@ -79,7 +72,7 @@ svg.call(tip);
 
 console.log('hello');
 
-d3.json("data2.json",function(error,test) {
+d3.json("o1_coordinates.json",function(error,test) {
 
         console.log(test.imagepath);
 
@@ -106,8 +99,6 @@ img.onload=function(){
                 var width=this.width;
 
                 var height=this.height;
-
-
 
             imgs.attr("width", width)
 
@@ -149,6 +140,7 @@ svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.s
 }
 
 </script>
+
 
     </body>
 

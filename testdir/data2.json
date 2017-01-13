@@ -1,5 +1,5 @@
 {
-"imagepath": "../testimages/Kandanu1.jpg",
+"imagepath": "../images/Kandanu1.jpg",
 "segments": [
     { "geometry": { "x": 644, "y": 86, "height": 11, "width": 36 } },
     { "geometry": { "x": 668, "y": 86, "height": 13, "width": 36 } },

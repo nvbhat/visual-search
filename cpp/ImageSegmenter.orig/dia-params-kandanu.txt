@@ -1,0 +1,33 @@
+# Parameter file for Document Image Analysis
+# Lines starting with # will be ignored
+# 
+# File path to input document image
+#document-image-path=Kandanu1.jpg
+document-image-path=o8.jpg
+#
+# Output granularity
+# (LINES,WORDS)
+output-level=WORDS
+#
+# File path to output
+output-file-path=Kandanu1-out.txt
+#
+### Image Segmentation Parameters ###
+# % of image row which needs to be white pixels to be considered a line
+white-row-fill-factor=1.0
+#
+# % of image column which needs to be white pixels to be considered a word gap
+white-column-fill-factor=0.9 
+#
+# Minimum horizontal gap in pixels between two words
+minimum-inter-word-gap=1.0
+# 
+# Image borders can contain noise. To handle this, 'white'-en the borders around the image
+whiten-band-width=15
+whiten-band-height=15
+#
+### Image Preprocessing Parameters ###
+# To improve line detection, the image processing operation of dilation can be performed.
+do-dilation=0
+# Dilation is done using a line structuring element of a specified size
+line-element-size=5
